@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Etienne Gaumery - Assistant Communication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pastel-green': '#A8E6CF',
+                        'pastel-pink': '#FFB3BA',
+                        'pastel-blue': '#B3D9FF',
+                        'pastel-purple': '#D4A5FF',
+                        'pastel-yellow': '#FFE5B4'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .bubble {
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .photo-placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+        }
+        .icon-large {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen p-4">
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
+        <!-- Header avec photo -->
+        <div class="flex items-center justify-between bg-gradient-to-r from-pastel-blue to-pastel-purple rounded-xl p-8">
+            <div>
+                <h1 class="text-4xl font-bold text-white">Etienne Gaumery</h1>
+                <h2 class="text-2xl font-semibold text-white mt-2">Assistant Communication – Alternance</h2>
+            </div>
+            <div>
+                <div class="bg-gradient-to-br from-pastel-purple to-pastel-blue w-36 h-36 rounded-full flex items-center justify-center border-4 border-pastel-blue shadow-lg overflow-hidden">
+                    <img src="photo-profil.jpg" alt="Photo de profil" class="w-full h-full object-cover" style="object-position: center 90%;" />
+                </div>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 p-8">
+            <!-- Colonne gauche -->
+            <div class="space-y-6">
+                <!-- Contact -->
+                <div class="bubble bg-pastel-green p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <svg class="icon-large" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        Contact
+                    </h2>
+                    <div class="space-y-2 text-gray-700">
+                        <div class="flex items-center">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <a href="mailto:gaumery@hotmail.com" class="hover:text-pastel-purple">gaumery@hotmail.com</a>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            <a href="tel:+33620568257" class="hover:text-pastel-purple">+33 6 20 56 82 57</a>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>Bordeaux, France</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profil -->
+                <div class="bubble bg-pastel-pink p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <svg class="icon-large" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                        Profil
+                    </h2>
+                    <p class="text-gray-700 leading-relaxed">
+                        Passionné par la communication digitale, l'art et les nouvelles technologies, je suis en reconversion dans le numérique. Avec une double compétence en gestion de projet créatif et développement web, je souhaite rejoindre une agence innovante comme Côte Ouest pour mettre en œuvre des contenus engageants et bien pensés.
+                    </p>
+                </div>
+
+                <!-- Formation -->
+                <div class="bubble bg-pastel-yellow p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <svg class="icon-large" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                        </svg>
+                        Formation
+                    </h2>
+                    <div class="space-y-3">
+                        <div class="border-l-4 border-pastel-purple pl-4">
+                            <div class="font-semibold text-gray-800 flex items-center">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                                2024
+                            </div>
+                            <div class="text-gray-700">Bootcamp Développement Web – Le Wagon Bordeaux</div>
+                        </div>
+                        <div class="border-l-4 border-pastel-purple pl-4">
+                            <div class="font-semibold text-gray-800 flex items-center">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                                2011–2013
+                            </div>
+                            <div class="text-gray-700">MBA Commerce de l'Art – ICART Paris</div>
+                        </div>
+                        <div class="border-l-4 border-pastel-purple pl-4">
+                            <div class="font-semibold text-gray-800 flex items-center">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                                2006–2009
+                            </div>
+                            <div class="text-gray-700">Licence Hôtellerie – Vatel Bordeaux</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Langues & Intérêts -->
+                <div class="bubble bg-pastel-blue p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <svg class="icon-large" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Langues & Intérêts
+                    </h2>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">Langues</h3>
+                            <div class="space-y-1 text-gray-700">
+                                <div>🇫🇷 Français (natif)</div>
+                                <div>🇬🇧 Anglais (courant)</div>
+                                <div>🇪🇸 Espagnol (intermédiaire)</div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">Centres d'intérêt</h3>
+                            <div class="text-gray-700 space-y-1">
+                                <div>• Technologies & IA</div>
+                                <div>• Art moderne & photographie</div>
+                                <div>• Communication digitale</div>
+                                <div>• Sport : trail, golf, surf, tennis</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne droite -->
+            <div class="space-y-6">
+                <!-- Expérience -->
+                <div class="bubble bg-pastel-purple p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <svg class="icon-large" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6"/>
+                        </svg>
+                        Expérience
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-pastel-pink pl-4">
+                            <div class="font-bold text-gray-800 flex items-center">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                                Fondateur – Galerie Joséphine
+                            </div>
+                            <div class="text-sm text-gray-600 mb-2">2019–2025</div>
+                            <ul class="text-gray-700 space-y-1 text-sm">
+                                <li>• Galerie d'art en ligne spécialisée dans les artistes voyageurs</li>
+                                <li>• Communication digitale, stratégie de contenu, storytelling</li>
+                                <li>• Développement du site web, sourcing artistes, ventes</li>
+                            </ul>
+                        </div>
+                        <div class="border-l-4 border-pastel-pink pl-4">
+                            <div class="font-bold text-gray-800 flex items-center">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                                Responsable Service Client – Catawiki
+                            </div>
+                            <div class="text-sm text-gray-600 mb-2">2016–2017</div>
+                            <ul class="text-gray-700 space-y-1 text-sm">
+                                <li>• Gestion des clients internationaux</li>
+                                <li>• Traitement des réclamations et litiges</li>
+                                <li>• Outils CRM (Zendesk)</li>
+                            </ul>
+                        </div>
+                        <div class="border-l-4 border-pastel-pink pl-4">
+                            <div class="font-bold text-gray-800 flex items-center">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                </svg>
+                                Assistant Maison de Vente – Christie's Paris
+                            </div>
+                            <div class="text-sm text-gray-600 mb-2">2015–2016</div>
+                            <ul class="text-gray-700 space-y-1 text-sm">
+                                <li>• Aide aux enchères, ordres d'achat</li>
+                                <li>• Suivi administratif et logistique</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compétences -->
+                <div class="bubble bg-pastel-green p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <svg class="icon-large" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        Compétences
+                    </h2>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2 flex items-center">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+                                </svg>
+                                Communication & Marketing
+                            </h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">Réseaux sociaux</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">Instagram</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">LinkedIn</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">Création de contenu</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">Figma</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">Canva</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">Storytelling</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">SEO</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">Newsletters</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2 flex items-center">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                </svg>
+                                Technique
+                            </h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">HTML</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">CSS</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">JavaScript</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">React</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">Supabase</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">Notion</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">Trello</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">GitHub</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">IA</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">Cursor</span>
+                                <span class="bg-white/50 px-3 py-1 rounded-full text-sm text-gray-700">Zapier</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
