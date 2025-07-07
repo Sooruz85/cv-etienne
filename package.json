@@ -1,0 +1,23 @@
+{
+  "name": "cv-etienneg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "next.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sooruz85/cv-etienne.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sooruz85/cv-etienne/issues"
+  },
+  "homepage": "https://github.com/Sooruz85/cv-etienne#readme",
+  "dependencies": {
+    "puppeteer": "^24.11.0"
+  }
+}
