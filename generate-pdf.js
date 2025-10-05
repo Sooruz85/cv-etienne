@@ -116,12 +116,12 @@ console.log('🚀 Démarrage du script de génération PDF...');
            await page.pdf({
              path: outputPath,
              format: 'A4',
-             printBackground: false,
+             printBackground: true,
              margin: {
-               top: '10mm',
-               right: '10mm',
-               bottom: '10mm',
-               left: '10mm'
+               top: '20mm',
+               right: '15mm',
+               bottom: '20mm',
+               left: '15mm'
              },
              timeout: 180000
            });
