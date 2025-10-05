@@ -113,18 +113,18 @@ console.log('🚀 Démarrage du script de génération PDF...');
     // 10. Génération du PDF
     console.log('📄 Génération du PDF...');
     try {
-      await page.pdf({
-        path: outputPath,
-        format: 'A4',
-        printBackground: true,
-        margin: {
-          top: '20mm',
-          right: '15mm',
-          bottom: '20mm',
-          left: '15mm'
-        },
-        timeout: 180000
-      });
+           await page.pdf({
+             path: outputPath,
+             format: 'A4',
+             printBackground: false,
+             margin: {
+               top: '10mm',
+               right: '10mm',
+               bottom: '10mm',
+               left: '10mm'
+             },
+             timeout: 180000
+           });
       console.log("✅ PDF généré avec succès !");
     } catch (pdfError) {
       console.error("❌ ERREUR lors de la génération du PDF :", pdfError.message);
