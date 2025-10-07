@@ -17,7 +17,7 @@
     "url": "https://github.com/Sooruz85/cv-etienne/issues"
   },
   "homepage": "https://github.com/Sooruz85/cv-etienne#readme",
-  "dependencies": {
-    "puppeteer": "^24.22.0"
+  "devDependencies": {
+    "puppeteer": "^24.23.0"
   }
 }
