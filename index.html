@@ -51,8 +51,8 @@
             body {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
-                font-size: 10pt;
-                line-height: 1.3;
+                font-size: 11pt;
+                line-height: 1.4;
                 margin: 0;
                 padding: 0;
             }
@@ -69,117 +69,123 @@
                 margin: 0 !important;
                 padding: 0 !important;
             }
-            /* Header compact mais lisible */
+            /* Header épuré et lisible */
             .bg-gradient-to-r {
-                padding: 1rem !important;
+                padding: 1.2rem !important;
             }
             .w-32, .h-32 {
-                width: 3rem !important;
-                height: 3rem !important;
+                width: 4.5rem !important;
+                height: 4.5rem !important;
             }
             .space-x-8 > * + * {
-                margin-left: 0.8rem !important;
+                margin-left: 1rem !important;
             }
             .space-x-6 > * + * {
-                margin-left: 0.5rem !important;
+                margin-left: 0.6rem !important;
             }
-            
-            /* Espacements entre sections - aérés */
+            .mr-3 {
+                margin-right: 0.4rem !important;
+            }
+            .mr-2 {
+                margin-right: 0.3rem !important;
+            }
+
+            /* Espacements entre sections - bien aérés */
             .space-y-4 > * + * {
-                margin-top: 0.6rem !important;
+                margin-top: 0.7rem !important;
             }
             .space-y-2 > * + * {
-                margin-top: 0.3rem !important;
+                margin-top: 0.35rem !important;
             }
             .space-y-1 > * + * {
-                margin-top: 0.15rem !important;
+                margin-top: 0.2rem !important;
             }
-            
+
             /* Paddings des sections - généreux */
             .p-8 {
-                padding: 0.8rem !important;
+                padding: 1rem !important;
             }
             .p-6 {
-                padding: 0.6rem !important;
+                padding: 0.7rem !important;
             }
             .p-4 {
-                padding: 0.6rem !important;
+                padding: 0.7rem !important;
             }
-            
-            /* Marges - bien espacées */
+
+            /* Marges - espacées */
             .mb-4 {
-                margin-bottom: 0.4rem !important;
+                margin-bottom: 0.5rem !important;
             }
             .mb-3 {
-                margin-bottom: 0.3rem !important;
+                margin-bottom: 0.35rem !important;
             }
             .mb-2 {
-                margin-bottom: 0.2rem !important;
+                margin-bottom: 0.25rem !important;
             }
             .mb-1 {
-                margin-bottom: 0.15rem !important;
+                margin-bottom: 0.2rem !important;
             }
-            .mt-1 {
-                margin-top: 0.15rem !important;
+            .mt-1, .mt-2 {
+                margin-top: 0.2rem !important;
             }
             .gap-4 {
-                gap: 0.5rem !important;
+                gap: 0.6rem !important;
             }
-            
-            /* Typographie - lisible et hiérarchisée */
+
+            /* Typographie - grande et lisible */
             .text-4xl {
-                font-size: 1.8rem !important;
+                font-size: 2rem !important;
                 font-weight: 300 !important;
             }
             .text-xl {
-                font-size: 1.1rem !important;
+                font-size: 1.2rem !important;
             }
             .text-sm {
-                font-size: 0.85rem !important;
-                line-height: 1.3 !important;
+                font-size: 0.95rem !important;
+                line-height: 1.4 !important;
             }
             .text-xs {
-                font-size: 0.75rem !important;
-                line-height: 1.25 !important;
+                font-size: 0.85rem !important;
+                line-height: 1.35 !important;
             }
             .text-base {
-                font-size: 0.9rem !important;
+                font-size: 1rem !important;
             }
-            
+
             /* Titres - bien espacés */
             h1, h2, h3, h4 {
                 margin-top: 0 !important;
-                margin-bottom: 0.3rem !important;
+                margin-bottom: 0.35rem !important;
             }
-            
-            /* Listes - respirent */
+
+            /* Listes - aérées */
             ul {
-                margin-top: 0.15rem !important;
-                margin-bottom: 0.15rem !important;
+                margin-top: 0.2rem !important;
+                margin-bottom: 0.2rem !important;
             }
-            
+
             /* Icônes - taille visible */
             .w-5, .h-5 {
-                width: 1.1rem !important;
-                height: 1.1rem !important;
+                width: 1.2rem !important;
+                height: 1.2rem !important;
             }
             .w-4, .h-4 {
-                width: 0.9rem !important;
-                height: 0.9rem !important;
+                width: 1rem !important;
+                height: 1rem !important;
             }
-            
+
             /* Arrondis maintenus */
             .rounded-xl {
-                border-radius: 0.6rem !important;
+                border-radius: 0.7rem !important;
             }
-            
-            /* Tags de compétences - lisibles */
+
+            /* Tags de compétences - bien lisibles */
             .skill-tag {
-                padding: 0.2rem 0.5rem !important;
-                font-size: 0.75rem !important;
-                margin: 0.1rem !important;
+                padding: 0.25rem 0.6rem !important;
+                font-size: 0.85rem !important;
+                margin: 0.12rem !important;
             }
-            
+
             /* Saut de page intelligent après Formation (colonne gauche) */
             .space-y-4 > div:nth-child(3) {
                 page-break-after: always !important;
@@ -201,23 +207,25 @@
                 <!-- Informations principales -->
                 <div class="flex-1">
                     <h1 class="text-4xl font-light mb-2">Etienne Gaumery</h1>
-                    <h2 class="text-xl font-medium opacity-95 mb-4">Alternant QSE • Qualité • Sécurité • Environnement (Alternance 2025)</h2>
-                    <p class="text-xs opacity-80 mt-1">Formation Bac+2/3 QSE • Économie circulaire • Déploiement ISO 45001 • Prévention des risques</p>
-                    <p class="text-xs opacity-80">Recherche alternance 2 ans • Mercuès/Bordeaux • Disponible septembre 2025</p>
+                    <h2 class="text-xl font-medium opacity-95 mb-3">Alternant QSE – Alternance 2 ans</h2>
+                    <p class="text-sm opacity-90 mb-3">Qualité • Sécurité • Environnement</p>
 
                     <!-- Contact -->
-                    <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-6 mt-2">
                         <div class="flex items-center">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                         </svg>
-                            <span class="text-base">+33 6 20 56 82 57</span>
+                            <span class="text-sm">06 20 56 82 57</span>
                     </div>
                         <div class="flex items-center">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
-                            <span class="text-base">gaumery@hotmail.com</span>
+                            <span class="text-sm">gaumery@hotmail.com</span>
+                    </div>
+                        <div class="flex items-center">
+                            <span class="text-sm">📍 Bordeaux / Mercuès</span>
                     </div>
                     </div>
                 </div>
@@ -240,9 +248,9 @@
                             À propos
                         </h3>
                         <p class="text-sm text-text-gray leading-relaxed">
-                            <strong>Motivé par les enjeux environnementaux et la gestion des risques</strong>, je souhaite intégrer une entreprise innovante du secteur de l'économie circulaire. Après une première expérience professionnelle dans le marché de l'art et le service client (Christie's Paris, Catawiki Amsterdam), j'ai développé rigueur, sens du détail et qualités relationnelles.
+                            Motivé par les enjeux environnementaux et la gestion des risques, je souhaite intégrer le secteur de l'économie circulaire.
 
-                            <strong>En formation QSE (Bac+2/3) avec des connaissances en développement web</strong>, je dispose de compétences transférables en gestion documentaire, reporting, animation de processus et accompagnement d'audits. Mon objectif : <strong>contribuer concrètement à la sécurité des équipes et à la préservation de l'environnement au sein d'une organisation exigeante</strong>.
+                            En formation QSE (Bac+2/3), je dispose de compétences en gestion documentaire, reporting, animation de processus et accompagnement d'audits. Mon objectif : contribuer à la sécurité des équipes et à la préservation de l'environnement.
                         </p>
                     </div>
 
