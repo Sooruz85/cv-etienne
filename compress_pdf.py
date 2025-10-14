@@ -16,6 +16,9 @@ import argparse
 import os
 import sys
 from typing import Tuple
+import io
+
+from PIL import Image
 
 try:
     import pikepdf
@@ -38,7 +41,12 @@ def default_output_path(input_path: str) -> str:
     return f"{root}_light{ext or '.pdf'}"
 
 
-def compress_pdf(input_pdf: str, output_pdf: str) -> Tuple[int, int]:
+def compress_pdf(
+    input_pdf: str,
+    output_pdf: str,
+    jpeg_quality: int = 60,
+    max_image_dim: int = 1800,
+) -> Tuple[int, int]:
     if not os.path.exists(input_pdf):
         raise FileNotFoundError(f"Fichier introuvable: {input_pdf}")
 
@@ -47,18 +55,46 @@ def compress_pdf(input_pdf: str, output_pdf: str) -> Tuple[int, int]:
     # Open and save with optimization flags. We avoid any font subsetting or
     # layout changes; we only allow stream-level optimizations.
     with pikepdf.open(input_pdf) as pdf:
+        # Recompress embedded images where possible
+        for page in pdf.pages:
+            try:
+                xobj = page.Resources.get('/XObject', {})
+            except Exception:
+                xobj = {}
+            for name, obj in list(getattr(xobj, 'items', lambda: [])()):
+                try:
+                    if obj.get('/Subtype') != '/Image':
+                        continue
+                    # Convert to PIL
+                    pdf_image = pikepdf.PdfImage(obj)
+                    pil_img = pdf_image.as_pil_image()
+                    # Downscale very large images to reduce size while preserving qualité
+                    if max(pil_img.size) > max_image_dim:
+                        scale = max_image_dim / float(max(pil_img.size))
+                        new_size = (max(1, int(pil_img.size[0] * scale)), max(1, int(pil_img.size[1] * scale)))
+                        pil_img = pil_img.resize(new_size, Image.LANCZOS)
+                    # Re-encode to JPEG with balanced quality
+                    buf = io.BytesIO()
+                    pil_img = pil_img.convert('RGB')
+                    pil_img.save(buf, format='JPEG', quality=jpeg_quality, optimize=True, progressive=True)
+                    buf.seek(0)
+                    # Replace image stream in PDF
+                    pdf_image.replace(buf.getvalue(), format='jpeg')
+                except Exception:
+                    # If anything fails, keep the original image to avoid breaking layout
+                    continue
+
         # Optional cleanup that doesn't change visual output
-        pdf.remove_unreferenced_resources()
+        try:
+            pdf.remove_unreferenced_resources()
+        except Exception:
+            pass
 
         pdf.save(
             output_pdf,
-            # Recompress Flate streams (lossless)
             recompress_flate=True,
-            # Compress other streams where safe (includes some image streams)
             compress_streams=True,
-            # Keep object streams and XRef streams compact
             object_stream_mode=pikepdf.ObjectStreamMode.generate,
-            # Don't linearize to prioritize smaller output
             linearize=False,
         )
 
@@ -70,6 +106,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Compresse un PDF (optimisation images) sans modifier le design")
     parser.add_argument("input", nargs="?", default="CV_Etienne_Gaumery.pdf", help="PDF source à compresser")
     parser.add_argument("output", nargs="?", help="PDF de sortie (par défaut *_light.pdf)")
+    parser.add_argument("--quality", type=int, default=35, help="Qualité JPEG (10-95, défaut 35)")
+    parser.add_argument("--maxdim", type=int, default=1200, help="Dimension maximale des images (px), défaut 1200")
     args = parser.parse_args()
 
     input_pdf = args.input
@@ -78,7 +116,7 @@ def main() -> None:
     try:
         print("🚀 Compression en cours…")
         print(f"📥 Fichier source : {input_pdf}")
-        before, after = compress_pdf(input_pdf, output_pdf)
+        before, after = compress_pdf(input_pdf, output_pdf, jpeg_quality=args.quality, max_image_dim=args.maxdim)
         delta = before - after
         ratio = (1 - (after / before)) * 100 if before > 0 else 0
         print(f"📊 Taille avant : {human_size(before)}")
