@@ -68,35 +68,29 @@ console.log('🚀 Démarrage du script de génération PDF...');
     console.log(`📍 URL du fichier : ${fileUrl}`);
     
     try {
-      await page.goto(fileUrl, { 
-        waitUntil: 'networkidle0',
-        timeout: 30000 
-      });
-      console.log("✅ Navigation réussie vers le fichier HTML");
+      await page.goto(fileUrl, { waitUntil: 'load', timeout: 60000 });
+      console.log("✅ Navigation réussie vers le fichier HTML (waitUntil: 'load')");
     } catch (navigationError) {
       console.error("❌ ERREUR lors de la navigation :", navigationError.message);
-      console.log("💡 Tentative avec une stratégie de chargement différente...");
-      
-      try {
-        await page.goto(fileUrl, { 
-          waitUntil: 'domcontentloaded',
-          timeout: 30000 
-        });
-        console.log("✅ Navigation réussie avec 'domcontentloaded'");
-      } catch (secondError) {
-        console.error("❌ ERREUR lors de la seconde tentative :", secondError.message);
-        throw secondError;
-      }
+      console.log("💡 Tentative avec 'domcontentloaded'...");
+      await page.goto(fileUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
+      console.log("✅ Navigation réussie avec 'domcontentloaded'");
     }
 
     // 8. Attendre que le contenu soit chargé
     console.log('⏳ Attente du chargement complet...');
     try {
-      await page.waitForTimeout(2000); // Attendre 2 secondes pour les ressources
-      console.log("✅ Attente terminée");
-    } catch (waitError) {
-      console.warn("⚠️  Erreur lors de l'attente :", waitError.message);
-    }
+      // Attente courte sans bloquer sur le CDN
+      await page.waitForTimeout?.(1000);
+    } catch {}
+    // Forcer l'initialisation des icônes Lucide si présent
+    try {
+      await page.evaluate(() => {
+        if (window.lucide && window.lucide.createIcons) {
+          window.lucide.createIcons();
+        }
+      });
+    } catch {}
 
     // 9. Vérification du contenu de la page
     console.log('🔍 Vérification du contenu de la page...');
