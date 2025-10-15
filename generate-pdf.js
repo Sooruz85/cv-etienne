@@ -52,30 +52,21 @@ console.log('🚀 Démarrage du script de génération PDF...');
     });
     console.log("✅ Navigateur Puppeteer lancé avec succès");
 
-    // 5. Création d'une nouvelle page
-    console.log('📄 Création d\'une nouvelle page...');
+    // 5. Création d'une nouvelle page...
     const page = await browser.newPage();
     console.log("✅ Nouvelle page créée");
 
     // 6. Configuration de la page
     console.log('⚙️  Configuration de la page...');
     await page.setViewport({ width: 1200, height: 800 });
+    await page.setDefaultNavigationTimeout(0);
+    await page.setDefaultTimeout(0);
     console.log("✅ Viewport configuré (1200x800)");
 
-    // 7. Navigation vers le fichier HTML
-    console.log('🌐 Navigation vers le fichier HTML...');
-    const fileUrl = `file://${filePath}`;
-    console.log(`📍 URL du fichier : ${fileUrl}`);
-    
-    try {
-      await page.goto(fileUrl, { waitUntil: 'load', timeout: 60000 });
-      console.log("✅ Navigation réussie vers le fichier HTML (waitUntil: 'load')");
-    } catch (navigationError) {
-      console.error("❌ ERREUR lors de la navigation :", navigationError.message);
-      console.log("💡 Tentative avec 'domcontentloaded'...");
-      await page.goto(fileUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
-      console.log("✅ Navigation réussie avec 'domcontentloaded'");
-    }
+    // 7. Chargement du contenu HTML directement (évite les timeouts file:// et CDN)
+    console.log('🌐 Chargement du contenu HTML en mémoire...');
+    await page.setContent(htmlContent, { waitUntil: 'load' });
+    console.log("✅ Contenu HTML chargé avec setContent (waitUntil: 'load')");
 
     // 8. Attendre que le contenu soit chargé
     console.log('⏳ Attente du chargement complet...');
