@@ -63,9 +63,13 @@ console.log('🚀 Démarrage du script de génération PDF...');
     await page.setDefaultTimeout(0);
     console.log("✅ Viewport configuré (1200x800)");
 
+    // Injecter une balise <base> pour résoudre les URLs relatives (images, CSS locales)
+    const baseHref = `file://${__dirname}/`;
+    const htmlWithBase = htmlContent.replace(/<head>/i, `<head><base href="${baseHref}">`);
+
     // 7. Chargement du contenu HTML directement (évite les timeouts file:// et CDN)
     console.log('🌐 Chargement du contenu HTML en mémoire...');
-    await page.setContent(htmlContent, { waitUntil: 'load' });
+    await page.setContent(htmlWithBase, { waitUntil: 'load' });
     console.log("✅ Contenu HTML chargé avec setContent (waitUntil: 'load')");
 
     // 8. Attendre que le contenu soit chargé
