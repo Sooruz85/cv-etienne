@@ -25,7 +25,7 @@ console.log('🚀 Démarrage du script de génération PDF...');
 
     // 3. Lecture du contenu HTML pour vérification
     console.log('📖 Lecture du contenu HTML...');
-    const htmlContent = fs.readFileSync(filePath, 'utf8');
+    let htmlContent = fs.readFileSync(filePath, 'utf8');
     console.log(`✅ Contenu HTML lu (${htmlContent.length} caractères)`);
     
     if (htmlContent.length < 100) {
@@ -65,7 +65,23 @@ console.log('🚀 Démarrage du script de génération PDF...');
 
     // Injecter une balise <base> pour résoudre les URLs relatives (images, CSS locales)
     const baseHref = `file://${__dirname}/`;
-    const htmlWithBase = htmlContent.replace(/<head>/i, `<head><base href="${baseHref}">`);
+    let htmlWithBase = htmlContent.replace(/<head>/i, `<head><base href="${baseHref}">`);
+
+    // Encoder la photo en base64 et remplacer l'URL relative par un data URI
+    try {
+      const photoPath = path.resolve(__dirname, 'photo-profil.jpg');
+      if (fs.existsSync(photoPath)) {
+        const imgBuf = fs.readFileSync(photoPath);
+        const base64 = imgBuf.toString('base64');
+        const dataUri = `data:image/jpeg;base64,${base64}`;
+        htmlWithBase = htmlWithBase.replace(/src=["']photo-profil\.jpg["']/g, `src="${dataUri}"`);
+        console.log('🖼️ Photo embarquée en base64 dans le HTML');
+      } else {
+        console.warn('⚠️  photo-profil.jpg introuvable, image non embarquée');
+      }
+    } catch (e) {
+      console.warn('⚠️  Impossible d’embarquer la photo en base64:', e.message);
+    }
 
     // 7. Chargement du contenu HTML directement (évite les timeouts file:// et CDN)
     console.log('🌐 Chargement du contenu HTML en mémoire...');
