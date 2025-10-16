@@ -60,8 +60,8 @@
                 page-break-inside: avoid;
             }
             .section-break {
-                break-before: page;
-                page-break-before: always;
+                break-before: auto;
+                page-break-before: auto;
             }
             @page {
                 size: A4;
@@ -118,6 +118,10 @@
             .h-48 { height: 78px !important; }
             .mr-1\.5 { margin-right: 1.2px; }
             .space-y-0\.5 > * + * { margin-top: 0.3px; }
+            /* Forcer compactage global pour tenir en 2 pages */
+            .cv-container * {
+                page-break-inside: avoid;
+            }
         }
     </style>
 </head>
