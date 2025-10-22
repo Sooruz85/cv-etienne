@@ -110,16 +110,14 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
         format: 'A4',
         printBackground: true,
         margin: {
-          top: '15mm',
-          right: '10mm',
-          bottom: '15mm',
-          left: '10mm'
+          top: '20mm',
+          right: '15mm',
+          bottom: '20mm',
+          left: '15mm'
         },
-        // Options d'optimisation pour réduire la taille < 1MB
+        // Options d'optimisation
         preferCSSPageSize: true,
-        displayHeaderFooter: false,
-        scale: 0.8, // Réduire l'échelle pour économiser de l'espace
-        quality: 50 // Qualité d'image réduite
+        displayHeaderFooter: false
       });
       console.log("✅ PDF généré avec succès !");
     } catch (pdfError) {
