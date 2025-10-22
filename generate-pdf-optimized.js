@@ -75,11 +75,11 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
       }
       
       if (chosenPath) {
-            // Compression de l'image avec Sharp - optimisation pour taille < 1MB
+            // Compression de l'image avec Sharp - qualité optimale
             const imgBuffer = fs.readFileSync(chosenPath);
             const compressedBuffer = await sharp(imgBuffer)
-              .resize(250, 250, { fit: 'cover' }) // Redimensionner à 250x250px pour réduire la taille
-              .jpeg({ quality: 70 }) // Qualité JPEG à 70% pour réduire la taille
+              .resize(300, 300, { fit: 'cover' }) // Redimensionner à 300x300px pour bonne qualité
+              .jpeg({ quality: 85 }) // Qualité JPEG à 85% pour bonne qualité
               .toBuffer();
         
         const base64 = compressedBuffer.toString('base64');
@@ -137,8 +137,10 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
       
       if (stats.size < 1024 * 1024) { // Moins de 1 MB
         console.log("🎉 Excellent ! Le fichier fait moins de 1 MB");
+      } else if (stats.size < 1.5 * 1024 * 1024) { // Moins de 1.5 MB
+        console.log("✅ Bon ! Le fichier fait moins de 1.5 MB");
       } else {
-        console.log("⚠️  Le fichier fait plus de 1 MB, mais c'est acceptable pour un CV");
+        console.log("⚠️  Le fichier fait plus de 1.5 MB, mais c'est acceptable pour un CV de qualité");
       }
     } else {
       console.error("❌ ERREUR : Le fichier PDF n'a pas été créé");
