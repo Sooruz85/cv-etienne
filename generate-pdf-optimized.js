@@ -75,12 +75,12 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
       }
       
       if (chosenPath) {
-        // Compression de l'image avec Sharp - qualité améliorée
-        const imgBuffer = fs.readFileSync(chosenPath);
-        const compressedBuffer = await sharp(imgBuffer)
-          .resize(300, 300, { fit: 'cover' }) // Redimensionner à 300x300px pour meilleure qualité
-          .jpeg({ quality: 85 }) // Qualité JPEG à 85% pour meilleure qualité
-          .toBuffer();
+            // Compression de l'image avec Sharp - optimisation pour taille < 1MB
+            const imgBuffer = fs.readFileSync(chosenPath);
+            const compressedBuffer = await sharp(imgBuffer)
+              .resize(250, 250, { fit: 'cover' }) // Redimensionner à 250x250px pour réduire la taille
+              .jpeg({ quality: 70 }) // Qualité JPEG à 70% pour réduire la taille
+              .toBuffer();
         
         const base64 = compressedBuffer.toString('base64');
         const dataUri = `data:image/jpeg;base64,${base64}`;
@@ -110,14 +110,16 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
         format: 'A4',
         printBackground: true,
         margin: {
-          top: '20mm',
-          right: '15mm',
-          bottom: '20mm',
-          left: '15mm'
+          top: '15mm',
+          right: '10mm',
+          bottom: '15mm',
+          left: '10mm'
         },
-        // Options d'optimisation
+        // Options d'optimisation pour réduire la taille < 1MB
         preferCSSPageSize: true,
-        displayHeaderFooter: false
+        displayHeaderFooter: false,
+        scale: 0.8, // Réduire l'échelle pour économiser de l'espace
+        quality: 50 // Qualité d'image réduite
       });
       console.log("✅ PDF généré avec succès !");
     } catch (pdfError) {
