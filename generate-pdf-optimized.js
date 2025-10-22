@@ -75,11 +75,11 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
       }
       
       if (chosenPath) {
-        // Compression de l'image avec Sharp
+        // Compression de l'image avec Sharp - qualité améliorée
         const imgBuffer = fs.readFileSync(chosenPath);
         const compressedBuffer = await sharp(imgBuffer)
-          .resize(200, 200, { fit: 'cover' }) // Redimensionner à 200x200px
-          .jpeg({ quality: 60 }) // Qualité JPEG à 60%
+          .resize(300, 300, { fit: 'cover' }) // Redimensionner à 300x300px pour meilleure qualité
+          .jpeg({ quality: 85 }) // Qualité JPEG à 85% pour meilleure qualité
           .toBuffer();
         
         const base64 = compressedBuffer.toString('base64');
