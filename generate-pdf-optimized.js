@@ -64,7 +64,7 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
     // 7. Optimisation de la photo (compression)
     console.log('🖼️ Optimisation de la photo...');
     try {
-      const originalPath = path.resolve(__dirname, 'backups', 'photo-profil-original.jpg');
+      const originalPath = path.resolve(__dirname, 'photo-profil.jpeg');
       const fallbackPath = path.resolve(__dirname, 'photo-profil.jpg');
       let chosenPath = null;
       
@@ -78,7 +78,10 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
             // Compression de l'image avec Sharp - qualité optimale
             const imgBuffer = fs.readFileSync(chosenPath);
             const compressedBuffer = await sharp(imgBuffer)
-              .resize(300, 300, { fit: 'cover' }) // Redimensionner à 300x300px pour bonne qualité
+              .resize(300, 300, { 
+                fit: 'cover',
+                position: 'top' // Commencer par le haut pour capturer la tête complète
+              }) 
               .jpeg({ quality: 85 }) // Qualité JPEG à 85% pour bonne qualité
               .toBuffer();
         
