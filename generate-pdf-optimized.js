@@ -43,7 +43,6 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
         '--disable-background-timer-throttling',
         '--disable-backgrounding-occluded-windows',
         '--disable-renderer-backgrounding',
-        '--disable-images', // Désactiver le chargement d'images pour réduire la taille
         '--disable-javascript' // Désactiver JS si pas nécessaire
       ],
       timeout: 30000
@@ -87,7 +86,7 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
         
         const base64 = compressedBuffer.toString('base64');
         const dataUri = `data:image/jpeg;base64,${base64}`;
-        htmlContent = htmlContent.replace(/src=["']photo-profil\.jpg["']/g, `src="${dataUri}"`);
+        htmlContent = htmlContent.replace(/src=["']photo-profil\.(jpe?g)["']/g, `src="${dataUri}"`);
         console.log(`✅ Photo compressée et embarquée (${Math.round(compressedBuffer.length / 1024)} KB)`);
       } else {
         console.warn('⚠️  Aucune photo trouvée');
