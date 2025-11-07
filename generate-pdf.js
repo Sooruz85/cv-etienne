@@ -70,18 +70,21 @@ console.log('🚀 Démarrage du script de génération PDF...');
     // Encoder la photo en base64 (priorité à l'originale) et remplacer l'URL relative par un data URI
     try {
       const originalPath = path.resolve(__dirname, 'backups', 'photo-profil-original.jpg');
-      const fallbackPath = path.resolve(__dirname, 'photo-profil.jpg');
+      const fallbackPath = path.resolve(__dirname, 'photo-profil.jpeg');
+      const fallbackPath2 = path.resolve(__dirname, 'photo-profil.jpg');
       let chosenPath = null;
       if (fs.existsSync(originalPath)) {
         chosenPath = originalPath;
       } else if (fs.existsSync(fallbackPath)) {
         chosenPath = fallbackPath;
+      } else if (fs.existsSync(fallbackPath2)) {
+        chosenPath = fallbackPath2;
       }
       if (chosenPath) {
         const imgBuf = fs.readFileSync(chosenPath);
         const base64 = imgBuf.toString('base64');
         const dataUri = `data:image/jpeg;base64,${base64}`;
-        htmlWithBase = htmlWithBase.replace(/src=["']photo-profil\.jpg["']/g, `src="${dataUri}"`);
+        htmlWithBase = htmlWithBase.replace(/src=["']photo-profil\.(jpg|jpeg)["']/gi, `src="${dataUri}"`);
         console.log(`🖼️ Photo embarquée en base64 depuis: ${path.basename(chosenPath)}`);
       } else {
         console.warn('⚠️  Aucune photo trouvée (ni originale ni fallback).');
