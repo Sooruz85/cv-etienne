@@ -21,10 +21,12 @@ async function generatePDF() {
     const htmlPath = path.resolve(__dirname, 'index.html');
     console.log('📄 Chargement du fichier HTML:', htmlPath);
 
+    // Increase timeout and ensure styles are applied
     await page.goto(`file://${htmlPath}`, {
-        waitUntil: 'domcontentloaded',
-        timeout: 30000
+        waitUntil: 'networkidle0',
+        timeout: 120000
     });
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     console.log('📝 Génération du PDF...');
 
