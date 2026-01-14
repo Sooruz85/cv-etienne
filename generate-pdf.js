@@ -1,186 +1,42 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs');
 const path = require('path');
-
-console.log('🚀 Démarrage du script de génération PDF...');
+const fs = require('fs');
+const puppeteer = require('puppeteer');
 
 (async () => {
   try {
-    // 1. Vérification des chemins de fichiers
-    console.log('📁 Vérification des chemins de fichiers...');
-    const filePath = path.resolve(__dirname, 'index.html');
-    const outputPath = path.resolve(__dirname, 'CV_Etienne_Gaumery.pdf');
-    
-    console.log(`📍 Chemin du fichier HTML : ${filePath}`);
-    console.log(`📍 Chemin de sortie PDF : ${outputPath}`);
-
-    // 2. Vérification de l'existence du fichier HTML
-    console.log('🔍 Vérification de l\'existence du fichier HTML...');
-    if (!fs.existsSync(filePath)) {
-      console.error("❌ ERREUR : Fichier HTML introuvable :", filePath);
-      console.log("💡 Vérifiez que le fichier index.html existe dans le même dossier que ce script");
-      return;
-    }
-    console.log("✅ Fichier HTML trouvé !");
-
-    // 3. Lecture du contenu HTML pour vérification
-    console.log('📖 Lecture du contenu HTML...');
-    let htmlContent = fs.readFileSync(filePath, 'utf8');
-    console.log(`✅ Contenu HTML lu (${htmlContent.length} caractères)`);
-    
-    if (htmlContent.length < 100) {
-      console.warn("⚠️  ATTENTION : Le fichier HTML semble très court, il pourrait être vide ou corrompu");
-    }
-
-    // 4. Lancement de Puppeteer avec options robustes
-    console.log('🌐 Lancement de Puppeteer...');
     const browser = await puppeteer.launch({
-      headless: true, // Changez à false pour voir le navigateur
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-accelerated-2d-canvas',
-        '--no-first-run',
-        '--no-zygote',
-        '--disable-gpu',
-        '--disable-background-timer-throttling',
-        '--disable-backgrounding-occluded-windows',
-        '--disable-renderer-backgrounding'
-      ],
-      timeout: 30000 // 30 secondes de timeout
+      headless: 'new',
     });
-    console.log("✅ Navigateur Puppeteer lancé avec succès");
 
-    // 5. Création d'une nouvelle page...
     const page = await browser.newPage();
-    console.log("✅ Nouvelle page créée");
 
-    // 6. Configuration de la page
-    console.log('⚙️  Configuration de la page...');
-    await page.setViewport({ width: 1200, height: 800 });
-    await page.setDefaultNavigationTimeout(0);
-    await page.setDefaultTimeout(0);
-    console.log("✅ Viewport configuré (1200x800)");
+    const htmlPath = path.resolve(__dirname, 'index.html');
+    const pdfPath = path.resolve(__dirname, 'CV_Etienne_Gaumery.pdf');
 
-    // Injecter une balise <base> pour résoudre les URLs relatives (images, CSS locales)
-    const baseHref = `file://${__dirname}/`;
-    let htmlWithBase = htmlContent.replace(/<head>/i, `<head><base href="${baseHref}">`);
+    // Charge le fichier HTML local
+    await page.goto('file://' + htmlPath, {
+      waitUntil: 'networkidle0',
+    });
 
-    // Encoder la photo en base64 (priorité à l'originale) et remplacer l'URL relative par un data URI
-    try {
-      const originalPath = path.resolve(__dirname, 'backups', 'photo-profil-original.jpg');
-      const fallbackPath = path.resolve(__dirname, 'photo-profil.jpeg');
-      const fallbackPath2 = path.resolve(__dirname, 'photo-profil.jpg');
-      let chosenPath = null;
-      if (fs.existsSync(originalPath)) {
-        chosenPath = originalPath;
-      } else if (fs.existsSync(fallbackPath)) {
-        chosenPath = fallbackPath;
-      } else if (fs.existsSync(fallbackPath2)) {
-        chosenPath = fallbackPath2;
-      }
-      if (chosenPath) {
-        const imgBuf = fs.readFileSync(chosenPath);
-        const base64 = imgBuf.toString('base64');
-        const dataUri = `data:image/jpeg;base64,${base64}`;
-        htmlWithBase = htmlWithBase.replace(/src=["']photo-profil\.(jpg|jpeg)["']/gi, `src="${dataUri}"`);
-        console.log(`🖼️ Photo embarquée en base64 depuis: ${path.basename(chosenPath)}`);
-      } else {
-        console.warn('⚠️  Aucune photo trouvée (ni originale ni fallback).');
-      }
-    } catch (e) {
-      console.warn('⚠️  Impossible d’embarquer la photo en base64:', e.message);
-    }
+    // Génère le PDF en format A4 avec les arrière-plans
+    await page.pdf({
+      path: pdfPath,
+      format: 'A4',
+      printBackground: true,
+      // Police plus grande, on laisse le scale à 1
+      scale: 1,
+      margin: {
+        top: '5mm',
+        right: '5mm',
+        bottom: '5mm',
+        left: '5mm',
+      },
+    });
 
-    // 7. Chargement du contenu HTML directement (évite les timeouts file:// et CDN)
-    console.log('🌐 Chargement du contenu HTML en mémoire...');
-    await page.setContent(htmlWithBase, { waitUntil: 'load' });
-    console.log("✅ Contenu HTML chargé avec setContent (waitUntil: 'load')");
-
-    // 8. Attendre que le contenu soit chargé
-    console.log('⏳ Attente du chargement complet...');
-    try {
-      // Attente courte sans bloquer sur le CDN
-      await page.waitForTimeout?.(1000);
-    } catch {}
-    // Forcer l'initialisation des icônes Lucide si présent
-    try {
-      await page.evaluate(() => {
-        if (window.lucide && window.lucide.createIcons) {
-          window.lucide.createIcons();
-        }
-      });
-    } catch {}
-
-    // 9. Vérification du contenu de la page
-    console.log('🔍 Vérification du contenu de la page...');
-    const pageTitle = await page.title();
-    console.log(`📝 Titre de la page : "${pageTitle}"`);
-    
-    const bodyContent = await page.evaluate(() => document.body.textContent);
-    console.log(`📄 Contenu du body : ${bodyContent.length} caractères`);
-    
-    if (bodyContent.length < 100) {
-      console.warn("⚠️  ATTENTION : Le contenu de la page semble très court");
-    }
-
-    // 10. Génération du PDF
-    console.log('📄 Génération du PDF...');
-    try {
-      await page.pdf({
-        path: outputPath,
-        format: 'A4',
-        printBackground: true,
-        margin: {
-          top: '20mm',
-          right: '15mm',
-          bottom: '20mm',
-          left: '15mm'
-        }
-      });
-      console.log("✅ PDF généré avec succès !");
-    } catch (pdfError) {
-      console.error("❌ ERREUR lors de la génération du PDF :", pdfError.message);
-      throw pdfError;
-    }
-
-    // 11. Vérification du fichier PDF généré
-    console.log('🔍 Vérification du fichier PDF généré...');
-    if (fs.existsSync(outputPath)) {
-      const stats = fs.statSync(outputPath);
-      console.log(`✅ Fichier PDF créé : ${outputPath}`);
-      console.log(`📊 Taille du fichier : ${(stats.size / 1024).toFixed(2)} KB`);
-      
-      if (stats.size < 1000) {
-        console.warn("⚠️  ATTENTION : Le fichier PDF semble très petit (< 1 KB), il pourrait être vide");
-      }
-    } else {
-      console.error("❌ ERREUR : Le fichier PDF n'a pas été créé");
-    }
-
-    // 12. Fermeture du navigateur
-    console.log('🔒 Fermeture du navigateur...');
     await browser.close();
-    console.log("✅ Navigateur fermé");
-
-    console.log('🎉 Script terminé avec succès !');
-    console.log(`📄 Votre PDF est disponible ici : ${outputPath}`);
-
+    console.log('PDF généré :', pdfPath);
   } catch (error) {
-    console.error('💥 ERREUR FATALE :', error.message);
-    console.error('📋 Détails de l\'erreur :', error.stack);
-    
-    // Tentative de fermeture du navigateur en cas d'erreur
-    try {
-      if (typeof browser !== 'undefined') {
-        await browser.close();
-        console.log("✅ Navigateur fermé après erreur");
-      }
-    } catch (closeError) {
-      console.error("❌ Erreur lors de la fermeture du navigateur :", closeError.message);
-    }
-    
+    console.error('Erreur lors de la génération du PDF :', error);
     process.exit(1);
   }
 })();
