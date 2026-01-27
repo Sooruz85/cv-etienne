@@ -6,10 +6,10 @@ async function generatePDF() {
 
     const browser = await puppeteer.launch({
         headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
             '--disable-gpu'
         ]
     });
@@ -17,29 +17,27 @@ async function generatePDF() {
     console.log('🌐 Ouverture du navigateur...');
     const page = await browser.newPage();
 
-    // Charger le fichier HTML
+    // Charger le fichier HTML en local via file://
     const htmlPath = path.resolve(__dirname, 'index.html');
     console.log('📄 Chargement du fichier HTML:', htmlPath);
 
-    // Increase timeout and ensure styles are applied
     await page.goto(`file://${htmlPath}`, {
         waitUntil: 'networkidle0',
         timeout: 120000
     });
-    await new Promise((resolve) => setTimeout(resolve, 500));
 
     console.log('📝 Génération du PDF...');
 
-    // Générer le PDF
-      await page.pdf({
+    // Générer le PDF avec un rendu fidèle (fond, gradients, marges A4)
+    await page.pdf({
         path: 'CV_Etienne_Gaumery.pdf',
         format: 'A4',
         printBackground: true,
         margin: {
-          top: '20mm',
-          right: '15mm',
-          bottom: '20mm',
-          left: '15mm'
+            top: '8mm',
+            right: '8mm',
+            bottom: '8mm',
+            left: '8mm'
         }
     });
 
