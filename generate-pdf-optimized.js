@@ -42,8 +42,8 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
         '--disable-gpu',
         '--disable-background-timer-throttling',
         '--disable-backgrounding-occluded-windows',
-        '--disable-renderer-backgrounding',
-        '--disable-javascript' // Désactiver JS si pas nécessaire
+        '--disable-renderer-backgrounding'
+        // JS nécessaire pour Tailwind CSS (CDN) et rendu correct du CV
       ],
       timeout: 30000
     });
@@ -60,33 +60,46 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
     await page.setDefaultTimeout(0);
     console.log("✅ Viewport configuré (1200x800)");
 
-    // 7. Optimisation de la photo (compression)
+    // 7. Optimisation de la photo (compression) - utilise l'image référencée dans le HTML
     console.log('🖼️ Optimisation de la photo...');
     try {
-      const originalPath = path.resolve(__dirname, 'photo-profil.jpeg');
-      const fallbackPath = path.resolve(__dirname, 'photo-profil.jpg');
+      const photoCandidates = [
+        path.resolve(__dirname, 'photo-profil.jpeg'),
+        path.resolve(__dirname, 'photo-profil.jpg'),
+        path.resolve(__dirname, 'photo-profil-Christies.jpg'),
+        path.resolve(__dirname, 'photo-profil-Christies.jpeg')
+      ];
+      const imgMatch = htmlContent.match(/src=["']([^"']+\.jpe?g)["']/);
+      const ref = imgMatch ? path.basename(imgMatch[1]).replace(/\.(jpe?g)$/i, '') : null;
+      const ordered = ref ? [
+        ...photoCandidates.filter(p => path.basename(p, path.extname(p)) === ref),
+        ...photoCandidates.filter(p => path.basename(p, path.extname(p)) !== ref)
+      ] : photoCandidates;
       let chosenPath = null;
-      
-      if (fs.existsSync(originalPath)) {
-        chosenPath = originalPath;
-      } else if (fs.existsSync(fallbackPath)) {
-        chosenPath = fallbackPath;
+      let photoPattern = null;
+      for (const p of ordered) {
+        if (fs.existsSync(p)) {
+          chosenPath = p;
+          const basename = path.basename(p, path.extname(p));
+          photoPattern = new RegExp(`src=["']${basename}\\.(jpe?g)["']`, 'gi');
+          break;
+        }
       }
       
-      if (chosenPath) {
+      if (chosenPath && photoPattern) {
             // Compression de l'image avec Sharp - qualité optimale
             const imgBuffer = fs.readFileSync(chosenPath);
             const compressedBuffer = await sharp(imgBuffer)
               .resize(300, 300, { 
                 fit: 'cover',
-                position: 'top' // Commencer par le haut pour capturer la tête complète
+                position: 'top'
               }) 
-              .jpeg({ quality: 85 }) // Qualité JPEG à 85% pour bonne qualité
+              .jpeg({ quality: 85 })
               .toBuffer();
         
         const base64 = compressedBuffer.toString('base64');
         const dataUri = `data:image/jpeg;base64,${base64}`;
-        htmlContent = htmlContent.replace(/src=["']photo-profil\.(jpe?g)["']/g, `src="${dataUri}"`);
+        htmlContent = htmlContent.replace(photoPattern, `src="${dataUri}"`);
         console.log(`✅ Photo compressée et embarquée (${Math.round(compressedBuffer.length / 1024)} KB)`);
       } else {
         console.warn('⚠️  Aucune photo trouvée');
@@ -100,9 +113,9 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
     await page.setContent(htmlContent, { waitUntil: 'load' });
     console.log("✅ Contenu HTML chargé");
 
-    // 9. Attendre le chargement complet
+    // 9. Attendre le chargement complet (Tailwind + polices)
     console.log('⏳ Attente du chargement complet...');
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 2500));
 
     // 10. Génération du PDF avec options de compression
     console.log('📄 Génération du PDF optimisé...');

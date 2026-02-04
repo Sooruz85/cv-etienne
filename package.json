@@ -5,7 +5,9 @@
   "main": "next.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate": "node generate-pdf.js"
+    "generate": "node generate-pdf-optimized.js",
+    "watch": "nodemon --watch index.html --ext html --exec \"npm run generate\"",
+    "dev": "npm run generate && npm run watch"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,8 @@
   "dependencies": {
     "puppeteer": "^24.33.0",
     "sharp": "^0.34.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }
