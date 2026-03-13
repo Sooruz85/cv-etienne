@@ -30,7 +30,12 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
 
     // 4. Lancement de Puppeteer avec options optimisées
     console.log('🌐 Lancement de Puppeteer...');
-    const browser = await puppeteer.launch({
+    const chromePath = process.platform === 'darwin'
+      ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+      : process.platform === 'win32'
+        ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+        : null;
+    const launchOptions = {
       headless: true,
       args: [
         '--no-sandbox',
@@ -46,7 +51,11 @@ console.log('🚀 Démarrage du script de génération PDF optimisé...');
         // JS nécessaire pour Tailwind CSS (CDN) et rendu correct du CV
       ],
       timeout: 30000
-    });
+    };
+    if (chromePath && require('fs').existsSync(chromePath)) {
+      launchOptions.executablePath = chromePath;
+    }
+    const browser = await puppeteer.launch(launchOptions);
     console.log("✅ Navigateur Puppeteer lancé avec succès");
 
     // 5. Création d'une nouvelle page

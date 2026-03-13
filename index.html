@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Etienne Gaumery - Consultant Support Fonctionnel</title>
-  <meta name="description" content="Consultant Support Fonctionnel. Support ERP, hotline, ticketing. Analyse et diagnostic incidents, assistance utilisateurs, rédaction procédures. Déploiement projet retail. Bordeaux. YEVO.">
+  <title>Etienne Gaumery - CRM Performance & Project Analyst | Betclic</title>
+  <meta name="description" content="Etienne Gaumery. CRM Performance Analyst, Project Manager. Analyse data-driven, KPIs, dashboards, user behavior. Gestion de projet Agile. GA4, Looker Studio. Bordeaux.">
   <meta name="robots" content="index, follow">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -29,7 +29,7 @@
     body {
       font-family: 'Inter', sans-serif;
       font-size: 15px;
-      line-height: 1.35;
+      line-height: 1.45;
       -webkit-font-smoothing: antialiased;
     }
     h1, h2, h3, h4 {
@@ -52,8 +52,8 @@
       display: inline-block;
       background: rgba(255, 255, 255, 0.95);
       color: #2c3e50;
-      padding: 0.35rem 0.85rem;
-      border-radius: 8px;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
       font-size: 0.8rem;
       margin: 0.15rem;
       border: none;
@@ -91,6 +91,7 @@
     .language-native { background: #27ae60; }
     .language-fluent { background: #f39c12; }
     .language-intermediate { background: #e74c3c; }
+    .page-2-start { break-before: page; page-break-before: always; }
   </style>
   <style>
     @media print {
@@ -98,7 +99,7 @@
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
         font-size: 11pt;
-        line-height: 1.3;
+        line-height: 1.4;
       }
       .page-break {
         break-inside: auto;
@@ -110,7 +111,7 @@
       }
       @page {
         size: A4;
-        margin: 5mm;
+        margin: 10mm;
       }
       .cv-container {
         max-width: none !important;
@@ -134,23 +135,25 @@
       .text-2xl { font-size: 19.5pt; }
       .text-3xl { font-size: 22pt; }
       .text-4xl { font-size: 25pt; }
-      .space-y-1 > * + * { margin-top: 0.5px; }
-      .space-y-2 > * + * { margin-top: 1px; }
-      .space-y-3 > * + * { margin-top: 1.5px; }
-      .space-y-4 > * + * { margin-top: 2px; }
+      .space-y-1 > * + * { margin-top: 2px; }
+      .space-y-2 > * + * { margin-top: 4px; }
+      .space-y-2\.5 > * + * { margin-top: 5px; }
+      .space-y-3 > * + * { margin-top: 6px; }
+      .space-y-4 > * + * { margin-top: 8px; }
       .gap-1 { gap: 1.5px; }
-      .gap-2 { gap: 2px; }
+      .gap-2 { gap: 4px; }
+      .gap-3 { gap: 6px; }
       .gap-3 { gap: 2.5px; }
       .gap-4 { gap: 3px; }
       .gap-6 { gap: 4px; }
       .gap-8 { gap: 5px; }
-      .p-2 { padding: 2px; }
-      .p-3 { padding: 3px; }
-      .p-4 { padding: 4px; }
+      .p-2 { padding: 4px; }
+      .p-3 { padding: 5px; }
+      .p-4 { padding: 6px; }
       .p-5 { padding: 5px; }
       .p-8 { padding: 6px; }
-      .mb-1 { margin-bottom: 1px; }
-      .mb-2 { margin-bottom: 2px; }
+      .mb-1 { margin-bottom: 2px; }
+      .mb-2 { margin-bottom: 4px; }
       .mb-3 { margin-bottom: 2.5px; }
       .py-1 { padding-top: 3px; padding-bottom: 3px; }
       .px-2 { padding-left: 4px; padding-right: 4px; }
@@ -173,6 +176,10 @@
         break-inside: avoid;
         page-break-inside: avoid;
       }
+      .page-2-start {
+        break-before: page !important;
+        page-break-before: always !important;
+      }
       * {
         border: none !important;
         outline: none !important;
@@ -190,227 +197,125 @@
 </head>
 <body class="bg-white min-h-screen p-3">
   <div class="cv-container max-w-4xl mx-auto">
-    <div class="cv-inner bg-white shadow-lg rounded-lg p-3 space-y-3">
-      <!-- Header - Nom et titre pour ATS -->
+    <div class="cv-inner bg-white shadow-lg rounded-lg p-4 space-y-4">
+      <!-- Header -->
       <header class="bg-gradient-to-r from-blue-600 to-purple-700 text-white p-4 rounded-lg">
-        <div class="flex items-center justify-between gap-6">
+        <div class="flex items-center justify-between gap-4">
           <div class="flex-1">
-            <h1 class="text-4xl mb-2">Etienne Gaumery</h1>
-            <h2 class="text-2xl mb-1">Consultant Support Fonctionnel</h2>
-            <p class="text-sm mb-2">Support ERP · Hotline & Ticketing · Analyse & Diagnostic Incidents · Assistance Utilisateurs · Rédaction Procédures · Déploiement Retail · Bordeaux</p>
-            <div class="flex flex-col text-sm space-y-1">
-              <div class="flex items-center">
-                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                </svg>
-                +33 6 20 56 82 57
-              </div>
-              <div class="flex items-center">
-                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                </svg>
-                gaumery@hotmail.com
-              </div>
+            <h1 class="text-3xl mb-1">Etienne Gaumery</h1>
+            <h2 class="text-xl mb-0.5">CRM Performance & Project Analyst</h2>
+            <p class="text-sm opacity-90">Data-driven · KPIs · Dashboards · CRM · Gestion de projet · Agile · Bordeaux</p>
+            <p class="text-sm mb-1">38 ans</p>
+            <div class="flex flex-col text-sm space-y-0.5">
+              <div class="flex items-center"><svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>+33 6 20 56 82 57</div>
+              <div class="flex items-center"><svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>gaumery@hotmail.com</div>
             </div>
           </div>
-          <div class="w-52 h-52 rounded-full overflow-hidden border-4 border-white flex-shrink-0 bg-white mr-4" style="min-width: 208px; min-height: 208px;">
-            <img src="data:image/jpeg;base64,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" alt="Etienne Gaumery" class="w-full h-full object-cover" style="object-fit: cover; object-position: center center; display: block; width: 100%; height: 100%; min-width: 100%; min-height: 100%;" width="208" height="208" />
+          <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-white flex-shrink-0 bg-white" style="min-width: 96px; min-height: 96px;">
+            <img src="photo-profil.jpeg" alt="Etienne Gaumery" class="w-full h-full object-cover" width="96" height="96" />
           </div>
         </div>
       </header>
 
-      <!-- Main Content - une colonne pour ATS -->
-      <div>
-        <div class="flex flex-col gap-2">
-        <!-- Profil -->
-          <section class="page-break bg-gradient-to-br from-blue-100 to-indigo-200 rounded-lg shadow-md border-none p-2" aria-label="Profile">
-            <h3 class="text-lg font-bold text-primary mb-2 flex items-center border-none pb-1">Profil</h3>
-            <div class="text-sm text-text-gray leading-relaxed space-y-1">
-              <p>
-                J'ai travaillé chez Christie's puis Catawiki, dans des environnements multi-sites où les outils sont au centre de l'activité. Support utilisateurs, gestion de tickets, incidents à analyser. Quand ça bloque, il faut comprendre vite, prioriser et agir proprement.
-              </p>
-              <p>
-                Avec le temps, j'ai appris à aller au-delà du symptôme. Un ticket révèle souvent un problème de paramétrage, de process ou d'usage. J'ai pris l'habitude de structurer, rédiger des procédures, accompagner les équipes et faire remonter les sujets récurrents.
-              </p>
-              <p>
-                En parallèle, j'ai créé ma propre galerie d'art à Bordeaux. Être entrepreneur m'a obligé à tout gérer, outils, organisation, relation client, gestion d'activité. Ça m'a donné une vision très concrète du terrain et de l'impact réel des systèmes sur la performance.
-              </p>
-              <p>
-                Ma reconversion vers la tech et l'automatisation vient de là. Comprendre les outils en profondeur, améliorer les flux, rendre les systèmes plus simples et plus fiables au quotidien.
-              </p>
-            </div>
-          </section>
+      <!-- Profil -->
+      <section class="page-break bg-gradient-to-br from-blue-100 to-indigo-200 rounded-lg shadow-md border-none p-4" aria-label="Profile">
+        <h3 class="text-base font-bold text-primary mb-2">Profil</h3>
+        <p class="text-sm text-text-gray leading-relaxed">Le marché de l'art m'a d'abord confronté aux enjeux de la relation client et de la structuration des données : chez Christie's et Catawiki, j'ai appris à analyser les parcours utilisateurs, à piloter des bases CRM et à collaborer avec les équipes tech pour améliorer l'expérience. En créant la Galerie Joséphine, j'ai transformé cette approche en projets digitaux concrets — site, campagnes, reporting — et mesuré l'impact sur la performance. Aujourd'hui, formé au développement web (Le Wagon) et en MBA Marketing Digital, certifié Agile (PSM I), je cherche à mettre cette trajectoire au service d'équipes produit et data : relier la compréhension du comportement utilisateur aux décisions business, piloter les KPIs et accompagner la transformation digitale.</p>
+      </section>
 
-          <!-- Expérience professionnelle -->
-          <section class="page-break bg-gradient-to-br from-purple-100 to-pink-200 rounded-lg shadow-md border-none p-2" aria-label="Professional Experience">
-            <h3 class="text-lg font-bold text-primary mb-2 flex items-center border-none pb-1">Expérience Professionnelle</h3>
-            <div class="space-y-2">
-              <article>
-                <div class="flex justify-between items-start mb-1">
-                  <div>
-                    <h4 class="font-semibold text-text-gray text-sm">Gérant, Galerie Joséphine</h4>
-                    <p class="text-xs text-purple-700 font-medium mt-0.5">Bordeaux · Mai 2019 - Déc. 2025</p>
-                  </div>
-                </div>
-                <p class="text-xs text-text-gray leading-relaxed mt-1">
-                  Gestion complète d'une activité pendant 6 ans. Support utilisateurs au quotidien : réception et qualification des demandes, diagnostic des incidents, solutions à distance. Déploiement et paramétrage d'outils (site, CRM, bases de données). Rédaction de procédures, formation et accompagnement des utilisateurs. Remontée des dysfonctionnements et des besoins d'évolution. Interface avec prestataires et partenaires. Contexte exigeant en traçabilité et qualité des données.
-                </p>
-              </article>
-              <article>
-                <div class="flex justify-between items-start mb-1">
-                  <div>
-                    <h4 class="font-semibold text-text-gray text-sm">Customer Service Representative, Catawiki</h4>
-                    <p class="text-xs text-purple-700 font-medium mt-0.5">Pays-Bas · Juil. 2016 - Jan. 2018</p>
-                  </div>
-                </div>
-                <p class="text-xs text-text-gray leading-relaxed mt-1">
-                  Support et assistance utilisateurs sur une plateforme internationale : réception et qualification des demandes (ticketing, hotline), analyse et diagnostic des incidents, résolution à distance. Implémentation et utilisation du CRM. Remontée des dysfonctionnements et contribution aux évolutions fonctionnelles. Formation et accompagnement des utilisateurs. Rédaction de procédures. Contexte multi-sites, travail quotidien en anglais.
-                </p>
-              </article>
-              <article>
-                <div class="flex justify-between items-start mb-1">
-                  <div>
-                    <h4 class="font-semibold text-text-gray text-sm">Assistant ADV, Christie's</h4>
-                    <p class="text-xs text-purple-700 font-medium mt-0.5">Paris · Avr. 2015 - Déc. 2015</p>
-                  </div>
-                </div>
-                <p class="text-xs text-text-gray leading-relaxed mt-1">
-                  Support opérationnel et assistance : qualification des demandes, suivi des dossiers, mise à jour du CRM. Coordination avec les départements (logistique, commercial, opérations). Contribution à la préparation des ventes, rédaction de documents et reporting. Rigueur, priorisation et sens de l'organisation. Environnement exigeant, clientèle internationale.
-                </p>
-              </article>
-              <article>
-                <div class="flex justify-between items-start mb-1">
-                  <div>
-                    <h4 class="font-semibold text-text-gray text-sm">Assistant, Kapandji-Morhange</h4>
-                    <p class="text-xs text-purple-700 font-medium mt-0.5">Paris · Sep. - Déc. 2013</p>
-                  </div>
-                </div>
-                <p class="text-xs text-text-gray leading-relaxed mt-1">
-                  Support et assistance : suivi des dossiers, qualification des demandes, contact avec les clients (téléphone, présentiel). Rédaction de documents, mandats et procédures. Coordination des processus. Rigueur dans la tenue des fichiers et la priorisation des tâches.
-                </p>
-              </article>
-            </div>
-          </section>
-
-          <!-- Formation -->
-          <section class="page-break section-formation bg-gradient-to-br from-yellow-100 to-orange-200 rounded-lg shadow-md border-none p-2" aria-label="Education">
-            <h3 class="text-lg font-bold text-primary mb-2 flex items-center border-none pb-1">Formation</h3>
-            <div class="space-y-2 text-xs text-text-gray">
-              <div class="flex justify-between items-start">
-                <div class="flex-1">
-                  <div class="font-semibold text-text-gray text-sm">Formation Développement Web & Digital, Le Wagon</div>
-                  <div class="text-xs text-gray-500">Bordeaux · 2024</div>
-                  <div class="text-xs text-text-gray mt-1">Bootcamp intensif : Excel avancé, bases de données (SQL), outils digitaux. Appétence pour les systèmes intégrés et la transformation. Gestion de projet en équipe, méthodologie Agile.</div>
-                </div>
-              </div>
-              <div class="flex justify-between items-start">
-                <div class="flex-1">
-                  <div class="font-semibold text-text-gray text-sm">MBA Commerce International de l'Art (Bac+5)</div>
-                  <div class="text-xs text-gray-500">ICART, Paris · 2011-2013</div>
-                  <div class="text-xs text-text-gray mt-1">Formation commerce international (Bac+5). Gestion de projet, analyse, négociation, anglais des affaires. Stages chez Christie's et Sotheby's (départements ventes et opérations). Mémoire sur le commerce à l'international.</div>
-                </div>
-              </div>
-              <div class="flex justify-between items-start">
-                <div class="flex-1">
-                  <div class="font-semibold text-text-gray text-sm">Bachelor Management Hôtelier (Bac+3)</div>
-                  <div class="text-xs text-gray-500">Vatel France · 2006-2009</div>
-                  <div class="text-xs text-text-gray mt-1">Formation en alternance. Gestion opérationnelle, comptabilité, reporting, relation client, management d'équipe. Stages internationaux (Australie, Afrique du Sud). Anglais en environnement professionnel.</div>
-                </div>
-              </div>
-              <div class="flex justify-between items-start">
-                <div class="flex-1">
-                  <div class="font-semibold text-text-gray text-sm">Baccalauréat</div>
-                  <div class="text-xs text-gray-500">2006</div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Certifications -->
-          <section class="page-break bg-gradient-to-br from-amber-100 to-yellow-200 rounded-lg shadow-md border-none p-2" aria-label="Certifications">
-            <h3 class="text-lg font-bold text-primary mb-2 flex items-center border-none pb-1">Certifications</h3>
-            <div class="space-y-1.5 text-xs text-text-gray">
-              <div class="flex justify-between items-start">
-                <div class="flex-1">
-                  <div class="font-semibold text-text-gray text-sm">Professional Scrum Master I (PSM I)</div>
-                  <div class="text-xs text-gray-500">Scrum.org · 2026</div>
-                  <div class="text-xs text-text-gray mt-0.5">Méthodologie Agile et pilotage de projets de transformation.</div>
-                </div>
-              </div>
-              <div class="flex justify-between items-start">
-                <div class="flex-1">
-                  <div class="font-semibold text-text-gray text-sm">Make Advanced</div>
-                  <div class="text-xs text-gray-500">Make (Integromat) · 2026</div>
-                  <div class="text-xs text-text-gray mt-0.5">Automatisation de workflows, intégration d'outils, digitalisation des processus.</div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Compétences clés -->
-          <section class="page-break bg-gradient-to-br from-green-100 to-emerald-200 rounded-lg shadow-md border-none p-2" aria-label="Skills">
-            <h3 class="text-lg font-bold text-primary mb-2 flex items-center border-none pb-1">Compétences</h3>
-            <div class="flex flex-wrap gap-1">
-              <span class="skill-tag">Support fonctionnel ERP</span>
-              <span class="skill-tag">Hotline</span>
-              <span class="skill-tag">Ticketing</span>
-              <span class="skill-tag">Analyse & diagnostic incidents</span>
-              <span class="skill-tag">Assistance utilisateurs</span>
-              <span class="skill-tag">Solutions à distance</span>
-              <span class="skill-tag">Formation utilisateurs</span>
-              <span class="skill-tag">Rédaction procédures</span>
-              <span class="skill-tag">Qualification des demandes</span>
-              <span class="skill-tag">Remontée tendances</span>
-              <span class="skill-tag">Priorisation</span>
-              <span class="skill-tag">Organisation</span>
-              <span class="skill-tag">Vulgarisation</span>
-              <span class="skill-tag">Relationnel</span>
-              <span class="skill-tag">ERP</span>
-              <span class="skill-tag">Retail</span>
-              <span class="skill-tag">Multi-sites</span>
-            </div>
-          </section>
-
-          <!-- Outils -->
-          <section class="page-break bg-gradient-to-br from-cyan-100 to-blue-200 rounded-lg shadow-md border-none p-2" aria-label="Stack">
-            <h3 class="text-lg font-bold text-primary mb-2 flex items-center border-none pb-1">Outils</h3>
-            <div class="flex flex-wrap gap-1">
-              <span class="skill-tag">ERP</span>
-              <span class="skill-tag">Outils ticketing</span>
-              <span class="skill-tag">CRM</span>
-              <span class="skill-tag">Microsoft Excel</span>
-              <span class="skill-tag">Microsoft Office</span>
-              <span class="skill-tag">Google Workspace</span>
-            </div>
-          </section>
-
-          <!-- Languages -->
-          <section class="page-break bg-gradient-to-br from-emerald-100 to-teal-200 rounded-lg shadow-md border-none p-2" aria-label="Languages">
-            <h3 class="text-lg font-bold text-primary mb-2 flex items-center border-none pb-1">Langues</h3>
-            <div class="text-xs text-text-gray space-y-1">
-              <p><span class="font-semibold">Français</span> : langue maternelle. Excellente capacité rédactionnelle, maîtrise de la langue française.</p>
-              <p><span class="font-semibold">Anglais</span> : professionnel, oral et écrit. Indispensable pour des projets internationaux et des équipes/partenaires anglophones. Pratique quotidienne chez Catawiki (Pays-Bas), lors des stages Christie's et Sotheby's, et en Australie et Afrique du Sud.</p>
-              <p><span class="font-semibold">Espagnol</span> : niveau intermédiaire</p>
-            </div>
-          </section>
-
-          <!-- Centres d'intérêt -->
-          <section class="page-break bg-gradient-to-br from-rose-100 to-pink-200 rounded-lg shadow-md border-none p-2" aria-label="Interests">
-            <h3 class="text-lg font-bold text-primary mb-2 flex items-center border-none pb-1">Centres d'intérêt</h3>
-            <div class="text-xs text-text-gray leading-relaxed space-y-1">
-              <p><span class="font-semibold">Transformation & déploiement</span> : appétence pour les projets ERP, systèmes intégrés et continuité opérationnelle.</p>
-              <p><span class="font-semibold">Bordeaux</span> : ancré en Nouvelle-Aquitaine, disponible en mode hybride.</p>
-              <p><span class="font-semibold">Sport</span> : course à pied, surf, golf, tennis.</p>
-            </div>
-          </section>
-
+      <!-- Compétences -->
+      <section class="page-break bg-gradient-to-br from-green-100 to-emerald-200 rounded-lg shadow-md border-none p-4" aria-label="Skills">
+        <h3 class="text-base font-bold text-primary mb-2">Compétences</h3>
+        <div class="space-y-2">
+          <div><p class="text-xs font-semibold text-primary mb-0.5">CRM & Growth</p><div class="flex flex-wrap gap-1"><span class="skill-tag">CRM</span><span class="skill-tag">User behavior</span><span class="skill-tag">Growth strategy</span><span class="skill-tag">Data-driven decision making</span></div></div>
+          <div><p class="text-xs font-semibold text-primary mb-0.5">Analyse de données & performance</p><div class="flex flex-wrap gap-1"><span class="skill-tag">KPIs</span><span class="skill-tag">Dashboards</span><span class="skill-tag">Reporting</span><span class="skill-tag">Performance analysis</span></div></div>
+          <div><p class="text-xs font-semibold text-primary mb-0.5">Gestion de projet</p><div class="flex flex-wrap gap-1"><span class="skill-tag">Project management</span><span class="skill-tag">Agile / Scrum</span><span class="skill-tag">Cross-functional collaboration</span><span class="skill-tag">Stakeholder management</span></div></div>
+          <div><p class="text-xs font-semibold text-primary mb-0.5">Communication & collaboration</p><div class="flex flex-wrap gap-1"><span class="skill-tag">Documentation</span><span class="skill-tag">Résolution de problèmes</span><span class="skill-tag">Structuration d'informations</span></div></div>
         </div>
-      </div>
+      </section>
+
+      <!-- Expérience professionnelle -->
+      <section class="page-break section-experience bg-gradient-to-br from-purple-100 to-pink-200 rounded-lg shadow-md border-none p-3" aria-label="Professional Experience">
+        <h3 class="text-base font-bold text-primary mb-1.5">Expérience Professionnelle</h3>
+        <div class="space-y-2">
+          <article class="border-l-2 border-purple-300 pl-3">
+            <div class="flex justify-between items-baseline gap-2 flex-wrap">
+              <h4 class="font-semibold text-text-gray text-sm">Fondateur, Galerie Joséphine</h4>
+              <span class="text-xs text-purple-700 font-medium shrink-0">Bordeaux · Mai 2019 - Déc. 2025</span>
+            </div>
+            <p class="text-xs text-text-gray leading-relaxed mt-0.5"><strong>Projets digitaux & CRM</strong> : coordination cross-functional, gestion de projet site web et CRM. 50+ œuvres vendues à l'international. Campagnes digitales (SEO, newsletters) → +35% trafic organique en 6 mois. Structuration des besoins, reporting. Gestion ventes, relation client, logistique internationale.</p>
+          </article>
+          <article class="border-l-2 border-purple-300 pl-3">
+            <div class="flex justify-between items-baseline gap-2 flex-wrap">
+              <h4 class="font-semibold text-text-gray text-sm">Bilingual Customer Service Representative, Catawiki</h4>
+              <span class="text-xs text-purple-700 font-medium shrink-0">Amsterdam · Juil. 2016 - Jan. 2018</span>
+            </div>
+            <p class="text-xs text-text-gray leading-relaxed mt-0.5"><strong>Analyse user behavior & CRM</strong> : parcours utilisateurs, remontée structurée à l'équipe produit/tech. KPIs : satisfaction >90 %, 3 000+ utilisateurs. Implémentation système CRM. Collaboration cross-functional UX.</p>
+          </article>
+          <article class="border-l-2 border-purple-300 pl-3">
+            <div class="flex justify-between items-baseline gap-2 flex-wrap">
+              <h4 class="font-semibold text-text-gray text-sm">Bids Office Assistant, Christie's</h4>
+              <span class="text-xs text-purple-700 font-medium shrink-0">Paris · Avr. - Déc. 2015</span>
+            </div>
+            <p class="text-xs text-text-gray leading-relaxed mt-0.5"><strong>Gestion de projets SI & digitaux</strong> : coordination 15 ventes aux enchères, inter-sites (Paris, Londres, New York). Base CRM +2 000 contacts. Supports digitaux → +15% participation en ligne. Stakeholder management, suivi et reporting.</p>
+          </article>
+          <article class="border-l-2 border-purple-300 pl-3">
+            <div class="flex justify-between items-baseline gap-2 flex-wrap">
+              <h4 class="font-semibold text-text-gray text-sm">Administrative Assistant, Kapandji-Morhange</h4>
+              <span class="text-xs text-purple-700 font-medium shrink-0">Paris · Sep. - Déc. 2013</span>
+            </div>
+            <p class="text-xs text-text-gray leading-relaxed mt-0.5">Gestion ventes volontaires/judiciaires. Inventaire, estimations, catalogage, prise d'enchères téléphoniques. Analyse, structuration des informations, contrôle qualité, organisation des process.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Formation -->
+      <section class="page-break section-formation bg-gradient-to-br from-yellow-100 to-orange-200 rounded-lg shadow-md border-none p-4" aria-label="Education">
+        <h3 class="text-base font-bold text-primary mb-2">Formation</h3>
+        <div class="space-y-2.5 text-xs text-text-gray">
+          <div><div class="font-semibold text-text-gray text-sm">Certification Concepteur-Développeur Web</div><div class="text-gray-500">Le Wagon Bordeaux · Jan. - Mars 2024</div><div class="mt-0.5 leading-relaxed">Développement web fullstack (Ruby on Rails, JavaScript, PostgreSQL). Git, GitHub. Compréhension des environnements techniques, bases de données et cycle produit.</div></div>
+          <div><div class="font-semibold text-text-gray text-sm">MBA Expert Marketing Digital (Bac+5)</div><div class="text-gray-500">MyDigitalSchool Bordeaux · Sep. 2025 - Sep. 2027</div><div class="mt-0.5 leading-relaxed">Analytics, parcours utilisateurs, growth strategy. Projets : analyse data-driven, refonte UI/UX, optimisation de l'expérience client.</div></div>
+          <div><div class="font-semibold text-text-gray text-sm">MBA Commerce International (Bac+5)</div><div class="text-gray-500">ICART, Paris · 2011-2013</div><div class="mt-0.5 leading-relaxed">Commerce international. Stages Christie's (Paris) et Sotheby's (Londres).</div></div>
+          <div><div class="font-semibold text-text-gray text-sm">Bachelor Management Hôtelier (Bac+3)</div><div class="text-gray-500">Vatel France · 2006-2009</div><div class="mt-0.5 leading-relaxed">Organisation, sens du détail. Stages Australie et Afrique du Sud.</div></div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section class="page-break bg-gradient-to-br from-amber-100 to-yellow-200 rounded-lg shadow-md border-none p-4" aria-label="Certifications">
+        <h3 class="text-base font-bold text-primary mb-2">Certifications</h3>
+        <div class="space-y-2 text-xs text-text-gray">
+          <div><div class="font-semibold text-text-gray text-sm">Make Advanced</div><div class="text-gray-500">Make · Janv. 2026</div><div class="mt-0.5">Automatisation de workflows, intégrations données (formulaires, bases, CRM).</div></div>
+          <div><div class="font-semibold text-text-gray text-sm">Professional Scrum Master I (PSM I)</div><div class="text-gray-500">Scrum.org · Fév. 2026</div><div class="mt-0.5">Méthodologie Agile, gestion de projet.</div></div>
+        </div>
+      </section>
+
+      <!-- Outils & Technologies -->
+      <section class="page-break bg-gradient-to-br from-cyan-100 to-blue-200 rounded-lg shadow-md border-none p-4" aria-label="Stack">
+        <h3 class="text-base font-bold text-primary mb-2">Outils & Technologies</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag">GA4</span><span class="skill-tag">Looker Studio</span><span class="skill-tag">Excel</span><span class="skill-tag">CRM</span><span class="skill-tag">Make</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Git / GitHub</span><span class="skill-tag">Notion</span><span class="skill-tag">Slack</span><span class="skill-tag">Suite Office</span>
+        </div>
+      </section>
+
+      <!-- Langues -->
+      <section class="page-break bg-gradient-to-br from-emerald-100 to-teal-200 rounded-lg shadow-md border-none p-4" aria-label="Languages">
+        <h3 class="text-base font-bold text-primary mb-2">Langues</h3>
+        <div class="text-xs text-text-gray space-y-1.5 leading-relaxed">
+          <p><span class="font-semibold">Français</span> : langue maternelle.</p>
+          <p><span class="font-semibold">Anglais</span> : niveau professionnel. Usage quotidien en contexte international : Catawiki (Amsterdam), Christie's (Paris, Londres, New York). Stages Australie et Afrique du Sud.</p>
+        </div>
+      </section>
+
+      <!-- Centres d'intérêt -->
+      <section class="page-break bg-gradient-to-br from-rose-100 to-pink-200 rounded-lg shadow-md border-none p-4" aria-label="Interests">
+        <h3 class="text-base font-bold text-primary mb-2">Centres d'intérêt</h3>
+        <div class="text-xs text-text-gray leading-relaxed space-y-1.5">
+          <p><span class="font-semibold">Sport</span> : course à pied, surf, golf, tennis.</p>
+          <p><span class="font-semibold">Bénévolat</span> : Graine de solidarité, Et Change Now. Sensibilité RSE et économie circulaire.</p>
+        </div>
+      </section>
     </div>
-    <!-- Mots-clés ATS -->
-    <div style="display: none;">
-      Consultant Support Fonctionnel YEVO Bordeaux ERP retail Hotline Ticketing Déploiement Assistance utilisateurs Analyse incidents Diagnostic Formation utilisateurs Rédaction procédures Qualification demandes Remontée tendances Support fonctionnel Multi-sites
-    </div>
+    <div style="display:none">Etienne Gaumery CRM Performance Analyst Project Manager Betclic Bordeaux data-driven KPIs dashboards performance analysis user behavior growth strategy project management cross-functional collaboration stakeholder management Agile Scrum CRM analytics GA4 Looker Studio reporting</div>
 <script>
  if (window.lucide && window.lucide.createIcons) {
   window.lucide.createIcons();
