@@ -1,0 +1,11 @@
+---
+description: Générer automatiquement le PDF du CV après chaque modification
+globs: index.html
+alwaysApply: false
+---
+
+# Génération PDF du CV
+
+Après toute modification de `index.html`, exécuter systématiquement `npm run generate` pour produire le fichier `CV_Etienne_Gaumery.pdf`.
+
+Ne pas attendre que l'utilisateur le demande : lancer la génération du PDF à la fin des modifications du CV.
