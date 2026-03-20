@@ -6,110 +6,297 @@
   <title>Etienne Gaumery - Alternance Digitalisation outils de pilotage Supply Chain | Thales</title>
   <meta name="description" content="Etienne Gaumery. Digitalisation des outils de pilotage, standardisation des process, qualite des donnees, reporting KPI et coordination metiers. Profil structure, autonome et oriente amelioration continue.">
   <meta name="robots" content="index, follow">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'primary': '#2c3e50',
-            'secondary': '#3498db',
-            'accent': '#e74c3c',
-            'light-gray': '#ecf0f1',
-            'text-gray': '#34495e'
-          }
-        }
-      }
-    }
-  </script>
-  <!-- Lucide icons (CDN) -->
-  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --text: #2c3e50;
+      --muted: #34495e;
+      --card-radius: 12px;
+      --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.08);
+      --section-line-height: 1.42;
+      --section-line-height-print: 1.26;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
       font-family: 'Inter', sans-serif;
       font-size: 15px;
       line-height: 1.45;
+      color: var(--muted);
+      background: #fff;
       -webkit-font-smoothing: antialiased;
+      padding: 12px;
     }
-    h1, h2, h3, h4 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
+
+    .cv-container {
+      max-width: 1040px;
+      margin: 0 auto;
     }
-    h1 {
+
+    .cv-inner {
+      background: #fff;
+      border-radius: var(--card-radius);
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .header {
+      background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
+      color: #fff;
+      border-radius: var(--card-radius);
+      padding: 16px;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .header-text {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: 74ch;
+    }
+
+    .header h1 {
+      margin: 0 0 4px 0;
+      font-size: 2rem;
+      line-height: 1.05;
       letter-spacing: 0.01em;
     }
-    h2, section[aria-label] h3 {
+
+    .header h2 {
+      margin: 0 0 6px 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .header-subline {
+      margin: 0;
+      opacity: 0.92;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .header-age {
+      margin: 8px 0 10px 0;
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    .contact-line {
+      margin: 3px 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .profile-photo-wrap {
+      width: 144px;
+      height: 144px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.2);
+      flex-shrink: 0;
+      margin-left: auto;
+      margin-top: 2px;
+    }
+
+    .profile-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .section-card {
+      border-radius: var(--card-radius);
+      padding: 16px 18px;
+      border: none;
+    }
+
+    .section-profile { background: linear-gradient(135deg, #dbeafe 0%, #e8efff 100%); --section-accent: #1d4ed8; }
+    .section-skills { background: linear-gradient(135deg, #dcfce7 0%, #e8fbef 100%); --section-accent: #047857; }
+    .section-exp { background: linear-gradient(135deg, #f3e8ff 0%, #f8effc 100%); --section-accent: #7c3aed; }
+    .section-edu { background: linear-gradient(135deg, #fef9c3 0%, #fff5df 100%); --section-accent: #b45309; }
+    .section-cert { background: linear-gradient(135deg, #fef3c7 0%, #fff8dd 100%); --section-accent: #a16207; }
+    .section-tools { background: linear-gradient(135deg, #cffafe 0%, #e0f0ff 100%); --section-accent: #0f766e; }
+    .section-projects { background: linear-gradient(135deg, #e9d5ff 0%, #f1ebff 100%); --section-accent: #6d28d9; }
+    .section-lang { background: linear-gradient(135deg, #d1fae5 0%, #ddfaf3 100%); --section-accent: #047857; }
+    .section-interests { background: linear-gradient(135deg, #fde68a 0%, #fff1c9 100%); --section-accent: #92400e; }
+
+    .section-card h3 {
+      margin: 0 0 14px 0;
+      font-size: 1.08rem;
+      color: var(--section-accent, var(--text));
       letter-spacing: 0.005em;
     }
-    section[aria-label] h3 {
-      margin-bottom: 0.5rem;
+
+    .section-card p,
+    .section-card li {
+      margin: 0;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--muted);
     }
-    .cv-inner .space-y-1 > * + * {
-      margin-top: 0.375rem;
+
+    .skill-group + .skill-group {
+      margin-top: 14px;
     }
+
+    .skill-group-title {
+      margin: 0 0 4px 0;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--section-accent, var(--text));
+    }
+
+    .tag-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
     .skill-tag {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.95);
-      color: #2c3e50;
-      padding: 0.35rem 0.75rem;
+      background: #fff;
+      color: var(--text);
+      padding: 0.2rem 0.55rem;
       border-radius: 6px;
-      font-size: 0.8rem;
-      margin: 0.15rem;
-      border: none;
-      box-shadow: none;
+      font-size: 0.75rem;
+      border: 1px solid rgba(44, 62, 80, 0.14);
+      box-shadow: 0 1px 2px rgba(44, 62, 80, 0.08);
+      white-space: nowrap;
     }
-    .language-tag {
-      display: inline-flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.9);
-      color: #2c3e50;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      border: 1px solid rgba(44, 62, 80, 0.15);
-      margin: 0.1rem;
+
+    .experience-list {
+      display: grid;
+      gap: 14px;
     }
-    .interest-tag {
-      display: inline-flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.9);
-      color: #2c3e50;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      border: 1px solid rgba(52, 152, 219, 0.25);
-      margin: 0.1rem;
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 6px;
     }
-    .language-level {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      margin-right: 0.5rem;
+
+    .job-title {
+      margin: 0;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
     }
-    .language-native { background: #27ae60; }
-    .language-fluent { background: #f39c12; }
-    .language-intermediate { background: #e74c3c; }
-    .page-2-start { break-before: page; page-break-before: always; }
-  </style>
-  <style>
+
+    .job-date {
+      font-size: 0.75rem;
+      color: #7c3aed;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .bullet-list {
+      margin: 4px 0 0 16px;
+      padding: 0;
+      display: grid;
+      gap: 4px;
+    }
+
+    .section-inline-note {
+      margin-top: 12px;
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+
+    .block-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .projects-list {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .profile-text + .profile-text {
+      margin-top: 8px;
+    }
+
+    .section-profile .profile-text {
+      max-width: none;
+      line-height: 1.58;
+      text-wrap: pretty;
+    }
+
+    .page-2-start {
+      break-before: auto;
+    }
+
+    .section-edu,
+    .section-edu .block-stack > div {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .experience-list article,
+    .section-projects,
+    .section-interests {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 8px;
+      }
+      .cv-inner {
+        padding: 12px;
+      }
+      .header-inner {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .header-text {
+        flex: 1 1 auto;
+      }
+      .profile-photo-wrap {
+        width: 104px;
+        height: 104px;
+        margin-top: 0;
+      }
+      .header h1 {
+        font-size: 1.45rem;
+      }
+      .header h2 {
+        font-size: 0.95rem;
+      }
+      .header-subline,
+      .header-age,
+      .contact-line {
+        font-size: 0.82rem;
+      }
+    }
+
     @media print {
       body {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
         font-size: 10pt;
-        line-height: 1.15;
+        line-height: 1.18;
         padding: 0 !important;
-        min-height: auto !important;
-      }
-      .page-break {
-        break-inside: auto;
-        page-break-inside: auto;
-      }
-      .section-break {
-        break-before: auto;
-        page-break-before: auto;
       }
       @page {
         size: A4;
@@ -118,290 +305,268 @@
       .cv-container {
         max-width: none !important;
         margin: 0 !important;
-        padding: 0 !important;
       }
-      .skill-tag { 
-        font-size: 8.5pt; 
-        padding: 1px 3px; 
-        margin: 0.3px;
-        border-radius: 3px;
-        border: none !important;
+      .cv-inner {
         box-shadow: none !important;
-        outline: none !important;
+        padding: 7px;
+        gap: 10px;
       }
-      .text-xs { font-size: 10pt; }
-      .text-sm { font-size: 12pt; }
-      .text-base { font-size: 13.5pt; }
-      .text-lg { font-size: 15.5pt; }
-      .text-xl { font-size: 17.5pt; }
-      .text-2xl { font-size: 19.5pt; }
-      .text-3xl { font-size: 22pt; }
-      .text-4xl { font-size: 25pt; }
-      .space-y-1 > * + * { margin-top: 2px; }
-      .space-y-2 > * + * { margin-top: 4px; }
-      .space-y-2\.5 > * + * { margin-top: 5px; }
-      .space-y-3 > * + * { margin-top: 6px; }
-      .space-y-4 > * + * { margin-top: 8px; }
-      .gap-1 { gap: 1.5px; }
-      .gap-2 { gap: 4px; }
-      .gap-3 { gap: 6px; }
-      .gap-3 { gap: 2.5px; }
-      .gap-4 { gap: 3px; }
-      .gap-6 { gap: 4px; }
-      .gap-8 { gap: 5px; }
-      .p-2 { padding: 4px; }
-      .p-3 { padding: 5px; }
-      .p-4 { padding: 6px; }
-      .p-5 { padding: 5px; }
-      .p-8 { padding: 6px; }
-      .mb-1 { margin-bottom: 2px; }
-      .mb-2 { margin-bottom: 4px; }
-      .mb-3 { margin-bottom: 2.5px; }
-      .py-1 { padding-top: 3px; padding-bottom: 3px; }
-      .px-2 { padding-left: 4px; padding-right: 4px; }
-      .w-28 { width: 60px !important; }
-      .h-28 { height: 60px !important; }
-      .w-32 { width: 70px !important; }
-      .h-32 { height: 70px !important; }
-      .w-40 { width: 80px !important; }
-      .h-40 { height: 80px !important; }
-      .w-48 { width: 90px !important; }
-      .h-48 { height: 90px !important; }
-      .w-60 { width: 110px !important; }
-      .h-60 { height: 110px !important; }
-      .mr-1\.5 { margin-right: 2px; }
-      .space-y-0\.5 > * + * { margin-top: 1px; }
-      .cv-container * {
-        page-break-inside: auto;
+      .section-card {
+        padding: 7px 8px;
       }
-      .section-formation {
-        break-inside: avoid;
+      .section-card h3 {
+        margin-bottom: 6px;
+      }
+      .section-card p,
+      .section-card li {
+        line-height: var(--section-line-height-print);
+      }
+      .skill-tag {
+        font-size: 8.8pt;
+        padding: 2px 4px;
+        border: 1px solid rgba(44, 62, 80, 0.1);
+        box-shadow: none;
+      }
+      .profile-photo-wrap {
+        width: 120px;
+        height: 120px;
+      }
+      .page-2-start,
+      .page-2-start ~ .section-card {
+        padding: 7px 8px;
+      }
+      .page-2-start .block-stack {
+        gap: 9px;
+      }
+      .page-2-start .tag-wrap,
+      .page-2-start ~ .section-card .tag-wrap {
+        gap: 5px;
+      }
+      .section-edu,
+      .section-edu .block-stack > div,
+      .experience-list article,
+      .section-projects,
+      .section-interests,
+      .section-lang,
+      .section-cert,
+      .section-tools {
+        break-inside: avoid-page;
         page-break-inside: avoid;
-      }
-      .page-2-start {
-        break-before: page !important;
-        page-break-before: always !important;
-      }
-      * {
-        border: none !important;
-        outline: none !important;
-      }
-      .border-none,
-      [class*="border-"] {
-        border: none !important;
-        outline: none !important;
-      }
-      .shadow-md {
-        box-shadow: none !important;
       }
     }
   </style>
 </head>
-<body class="bg-white min-h-screen p-3">
-  <div class="cv-container max-w-4xl mx-auto">
-    <div class="cv-inner bg-white shadow-lg rounded-lg p-4 space-y-3">
-      <!-- Header -->
-      <header class="bg-gradient-to-r from-blue-600 to-purple-700 text-white p-3 rounded-lg">
-        <div class="flex items-center justify-between gap-4">
-          <div class="flex-1">
-            <h1 class="text-3xl mb-1">Etienne Gaumery</h1>
-            <h2 class="text-xl mb-0.5">Alternance - Digitalisation des outils de pilotage Supply Chain · Bordeaux</h2>
-            <p class="text-sm opacity-90">Reporting KPI · Qualite des donnees · Standardisation process · Coordination metiers</p>
-            <p class="text-sm mb-1">38 ans</p>
-            <div class="flex flex-col text-sm space-y-0.5">
-              <div class="flex items-center"><svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>+33 6 20 56 82 57</div>
-              <div class="flex items-center"><svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>gaumery@hotmail.com</div>
-            </div>
+<body>
+  <main class="cv-container">
+    <div class="cv-inner">
+      <header class="header">
+        <div class="header-inner">
+          <div class="header-text">
+            <h1>Etienne Gaumery</h1>
+            <h2>Alternance - Digitalisation des outils de pilotage Supply Chain · Bordeaux</h2>
+            <p class="header-subline">Reporting KPI · Qualite des donnees · Standardisation process · Coordination metiers</p>
+            <p class="header-age">38 ans</p>
+            <p class="contact-line">+33 6 20 56 82 57</p>
+            <p class="contact-line">gaumery@hotmail.com</p>
           </div>
-          <div class="w-36 h-36 rounded-full overflow-hidden border-2 border-white flex-shrink-0 bg-white" style="min-width: 144px; min-height: 144px;">
-            <img src="photo-profil.jpeg" alt="Etienne Gaumery" class="w-full h-full object-cover" width="144" height="144" />
+          <div class="profile-photo-wrap">
+            <img src="photo-profil.jpeg" alt="Etienne Gaumery" width="144" height="144">
           </div>
         </div>
       </header>
 
-      <!-- Profil -->
-      <section class="page-break bg-gradient-to-br from-blue-100 to-indigo-200 rounded-lg shadow-md border-none p-2" aria-label="Profile">
-        <h3 class="text-base font-bold text-primary mb-1">Profil</h3>
-        <p class="text-sm text-text-gray leading-snug">Profil operationnel entre digital, data et coordination metiers. J'organise les flux d'information, fiabilise les donnees et structure des routines de suivi pour produire un reporting clair et actionnable. A l'aise avec CRM, Excel/Google Sheets et outils de pilotage, j'accompagne les equipes dans la standardisation des pratiques et l'amelioration continue.</p>
+      <section class="section-card section-profile" aria-label="Profile">
+        <h3>Profil</h3>
+        <p class="profile-text">Parcours transversal entre relation client, gestion operationnelle et structuration d’outils digitaux. Sur le terrain, j’ai développé une approche fiable et orientée execution : organisation des priorités, coordination des interlocuteurs et suivi rigoureux des dossiers.</p>
+        <p class="profile-text">Le fil rouge de mon parcours est clair : transformer des flux d’information en routines de pilotage simples et utiles. Mon expérience en contexte international (Catawiki, Christie’s), complétée par un parcours de formation digitale, renforce ma capacité à relier outils, données et opérations au quotidien.</p>
       </section>
 
-      <!-- Compétences -->
-      <section class="page-break bg-gradient-to-br from-green-100 to-emerald-200 rounded-lg shadow-md border-none p-2" aria-label="Skills">
-        <h3 class="text-base font-bold text-primary mb-1">Compétences clés</h3>
-        <div class="space-y-1">
-          <div>
-            <p class="text-xs font-semibold text-primary mb-0.5">Pilotage Supply & outils</p>
-            <div class="flex flex-wrap gap-1">
-              <span class="skill-tag">Digitalisation des suivis</span>
-              <span class="skill-tag">Outils de pilotage KPI</span>
-              <span class="skill-tag">Structuration de routines</span>
-              <span class="skill-tag">Standards de mise a jour</span>
-              <span class="skill-tag">Amelioration continue</span>
-            </div>
+      <section class="section-card section-skills" aria-label="Skills">
+        <h3>Compétences clés</h3>
+
+        <div class="skill-group">
+          <p class="skill-group-title">Pilotage Supply & outils</p>
+          <div class="tag-wrap">
+            <span class="skill-tag">Digitalisation des suivis</span>
+            <span class="skill-tag">Outils de pilotage KPI</span>
+            <span class="skill-tag">Structuration de routines</span>
+            <span class="skill-tag">Standards de mise a jour</span>
+            <span class="skill-tag">Amelioration continue</span>
           </div>
-          <div>
-            <p class="text-xs font-semibold text-primary mb-0.5">Coordination metiers</p>
-            <div class="flex flex-wrap gap-1">
-              <span class="skill-tag">Coordination inter-equipes</span>
-              <span class="skill-tag">Partage d'information</span>
-              <span class="skill-tag">Suivi des plans d'action</span>
-              <span class="skill-tag">Communication transverse</span>
-              <span class="skill-tag">Esprit collectif</span>
-            </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-title">Coordination metiers</p>
+          <div class="tag-wrap">
+            <span class="skill-tag">Coordination inter-equipes</span>
+            <span class="skill-tag">Partage d'information</span>
+            <span class="skill-tag">Suivi des plans d'action</span>
+            <span class="skill-tag">Communication transverse</span>
+            <span class="skill-tag">Esprit collectif</span>
           </div>
-          <div>
-            <p class="text-xs font-semibold text-primary mb-0.5">Data & reporting</p>
-            <div class="flex flex-wrap gap-1">
-              <span class="skill-tag">CRM</span>
-              <span class="skill-tag">Excel / Google Sheets</span>
-              <span class="skill-tag">Looker Studio</span>
-              <span class="skill-tag">GA4</span>
-              <span class="skill-tag">Reporting</span>
-              <span class="skill-tag">Mise a jour des donnees</span>
-              <span class="skill-tag">Qualite de donnees</span>
-            </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-title">Data & reporting</p>
+          <div class="tag-wrap">
+            <span class="skill-tag">CRM</span>
+            <span class="skill-tag">Excel / Google Sheets</span>
+            <span class="skill-tag">Looker Studio</span>
+            <span class="skill-tag">GA4</span>
+            <span class="skill-tag">Reporting</span>
+            <span class="skill-tag">Mise a jour des donnees</span>
+            <span class="skill-tag">Qualite de donnees</span>
           </div>
-          <div>
-            <p class="text-xs font-semibold text-primary mb-0.5">Posture projet</p>
-            <div class="flex flex-wrap gap-1">
-              <span class="skill-tag">Autonomie</span>
-              <span class="skill-tag">Curiosite</span>
-              <span class="skill-tag">Proactivite</span>
-              <span class="skill-tag">Esprit d'equipe</span>
-              <span class="skill-tag">Sens du resultat</span>
-              <span class="skill-tag">Français natif / Anglais pro</span>
-              <span class="skill-tag">Gestion des priorites</span>
-            </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-group-title">Posture projet</p>
+          <div class="tag-wrap">
+            <span class="skill-tag">Autonomie</span>
+            <span class="skill-tag">Curiosite</span>
+            <span class="skill-tag">Proactivite</span>
+            <span class="skill-tag">Esprit d'equipe</span>
+            <span class="skill-tag">Sens du resultat</span>
+            <span class="skill-tag">Français natif / Anglais pro</span>
+            <span class="skill-tag">Gestion des priorites</span>
           </div>
         </div>
       </section>
 
-      <!-- Expérience professionnelle -->
-      <section class="page-break section-experience bg-gradient-to-br from-purple-100 to-pink-200 rounded-lg shadow-md border-none p-2" aria-label="Professional Experience">
-        <h3 class="text-base font-bold text-primary mb-1.5">Expérience Professionnelle</h3>
-        <div class="space-y-1.5">
+      <section class="section-card section-exp" aria-label="Professional Experience">
+        <h3>Expérience Professionnelle</h3>
+        <div class="experience-list">
           <article>
-            <div class="flex justify-between items-baseline gap-2 flex-wrap">
-              <h4 class="font-semibold text-text-gray text-sm">Fondateur, Galerie Joséphine</h4>
-              <span class="text-xs text-purple-700 font-medium shrink-0">Bordeaux · Mai 2019 - Déc. 2025</span>
+            <div class="job-head">
+              <p class="job-title">Fondateur, Galerie Joséphine</p>
+              <span class="job-date">Bordeaux · Mai 2019 - Déc. 2025</span>
             </div>
-            <ul class="text-xs text-text-gray leading-relaxed mt-0.5 list-disc ml-4 space-y-0.5">
+            <ul class="bullet-list">
               <li>Création et gestion d'une galerie spécialisée dans les peintres voyageurs.</li>
-              <li>Plus de 50 œuvres vendues à l'international (Europe, Asie, Pacifique).</li>
               <li>Pilotage de projets digitaux (site, CRM, campagnes) de l'expression de besoin au deploiement.</li>
-              <li>Coordination des parties prenantes internes/externes et structuration des process de suivi.</li>
               <li>Mise en place de routines de suivi, reporting et appui a la decision operationnelle.</li>
             </ul>
           </article>
+
           <article>
-            <div class="flex justify-between items-baseline gap-2 flex-wrap">
-              <h4 class="font-semibold text-text-gray text-sm">Bilingual Customer Service Representative, Catawiki</h4>
-              <span class="text-xs text-purple-700 font-medium shrink-0">Amsterdam · Juil. 2016 - Jan. 2018</span>
+            <div class="job-head">
+              <p class="job-title">Bilingual Customer Service Representative, Catawiki</p>
+              <span class="job-date">Amsterdam · Juil. 2016 - Jan. 2018</span>
             </div>
-            <ul class="text-xs text-text-gray leading-relaxed mt-0.5 list-disc ml-4 space-y-0.5">
-              <li>Supervision de la relation client pour plus de 3 000 utilisateurs.</li>
+            <ul class="bullet-list">
               <li>Recueil et traitement des besoins utilisateurs dans un contexte international.</li>
               <li>Suivi des transactions et des dossiers via CRM et back-office.</li>
               <li>Interface avec l'equipe tech pour prioriser les sujets et améliorer l'experience utilisateur.</li>
             </ul>
           </article>
+
           <article>
-            <div class="flex justify-between items-baseline gap-2 flex-wrap">
-              <h4 class="font-semibold text-text-gray text-sm">Bids Office Assistant, Christie's</h4>
-              <span class="text-xs text-purple-700 font-medium shrink-0">Paris · Avr. - Déc. 2015</span>
+            <div class="job-head">
+              <p class="job-title">Bids Office Assistant, Christie's</p>
+              <span class="job-date">Paris · Avr. - Déc. 2015</span>
             </div>
-            <ul class="text-xs text-text-gray leading-relaxed mt-0.5 list-disc ml-4 space-y-0.5">
+            <ul class="bullet-list">
               <li>Coordination de la preparation des ventes, de la reception des œuvres a la mise en catalogue.</li>
-              <li>Structuration et mise a jour de la base CRM (+2 000 contacts).</li>
-              <li>Production de supports et livrables de suivi pour les equipes metiers et operations.</li>
               <li>Mise a jour des donnees critiques et suivi operationnel des actions jusqu'a execution.</li>
             </ul>
           </article>
+
           <article>
-            <div class="flex justify-between items-baseline gap-2 flex-wrap">
-              <h4 class="font-semibold text-text-gray text-sm">Administrative Assistant, Kapandji-Morhange</h4>
-              <span class="text-xs text-purple-700 font-medium shrink-0">Paris · Sep. - Déc. 2013</span>
+            <div class="job-head">
+              <p class="job-title">Icono-commercial, plainpicture France</p>
+              <span class="job-date">Paris · Mai 2013 - Sep. 2013</span>
             </div>
-            <ul class="text-xs text-text-gray leading-relaxed mt-0.5 list-disc ml-4 space-y-0.5">
-              <li>Inventaire, catalogage et preparation d'expositions.</li>
-              <li>Prise d'ordres d'achat, suivi operationnel des ventes et gestion documentaire associee.</li>
+            <ul class="bullet-list">
+              <li>Développement commercial sur le marché français pour des besoins publicitaires, éditoriaux et presse.</li>
+              <li>Gestion de la relation client et suivi des demandes jusqu’à la livraison des contenus.</li>
+            </ul>
+          </article>
+
+          <article>
+            <div class="job-head">
+              <p class="job-title">Russian Art Department, Sotheby's</p>
+              <span class="job-date">Paris · Fév. 2013 - Avr. 2013</span>
+            </div>
+            <ul class="bullet-list">
+              <li>Étude d’œuvres destinées aux ventes londoniennes et rédaction de rapports d’analyse en anglais.</li>
+              <li>Contribution au suivi documentaire de trois ventes du département Art Russe.</li>
             </ul>
           </article>
         </div>
-        <p class="text-xs text-text-gray mt-1">Autres experiences: Sotheby's Paris (Russian Art Department), plainpicture France (icono-commercial), Hamilton Island et Inverdoorn (hospitality).</p>
+        <p class="section-inline-note">Autres experiences: Christie's (2012), Hamilton Island et Inverdoorn (hospitality).</p>
       </section>
 
-      <!-- Formation - page 2 -->
-      <section class="page-break page-2-start section-formation bg-gradient-to-br from-yellow-100 to-orange-200 rounded-lg shadow-md border-none p-2" aria-label="Education">
-        <h3 class="text-base font-bold text-primary mb-1">Formation</h3>
-        <div class="space-y-1 text-xs text-text-gray leading-snug">
+      <section class="section-card section-edu page-2-start" aria-label="Education">
+        <h3>Formation</h3>
+        <div class="block-stack">
           <div>
-          <p><span class="font-semibold">MBA Expert Marketing Digital (Bac+5)</span> - MyDigitalSchool Bordeaux (en cours). Gestion de projet, analytics, pilotage d'actions digitales et suivi des indicateurs de performance.</p>
-            <div class="flex flex-wrap gap-1 mt-0.5">
+            <p><strong>MBA Expert Marketing Digital (Bac+5)</strong> - MyDigitalSchool Bordeaux (formation interrompue faute d'entreprise partenaire). Gestion de projet, analytics, pilotage d'actions digitales et suivi des indicateurs de performance.</p>
+            <div class="tag-wrap">
               <span class="skill-tag">Gestion de projet</span><span class="skill-tag">Analytics</span><span class="skill-tag">KPI</span>
             </div>
           </div>
           <div>
-            <p><span class="font-semibold">Concepteur-Developpeur Web</span> - Le Wagon Bordeaux (2024). Formation fullstack (Ruby on Rails, JavaScript, PostgreSQL), logique produit et structuration de donnees.</p>
-            <div class="flex flex-wrap gap-1 mt-0.5">
+            <p><strong>Concepteur-Developpeur Web</strong> - Le Wagon Bordeaux (2024). Formation fullstack (Ruby on Rails, JavaScript, PostgreSQL), logique produit et structuration de donnees.</p>
+            <div class="tag-wrap">
               <span class="skill-tag">Ruby on Rails</span><span class="skill-tag">JavaScript</span><span class="skill-tag">PostgreSQL</span>
             </div>
           </div>
           <div>
-            <p><span class="font-semibold">MBA Commerce International (Bac+5)</span> - ICART Paris (2011-2013). Negociation, coordination commerciale et gestion de projets en environnement international.</p>
-            <div class="flex flex-wrap gap-1 mt-0.5">
+            <p><strong>MBA Commerce International (Bac+5)</strong> - ICART Paris (2011-2013). Negociation, coordination commerciale et gestion de projets en environnement international.</p>
+            <div class="tag-wrap">
               <span class="skill-tag">Negociation</span><span class="skill-tag">Coordination commerciale</span>
             </div>
           </div>
           <div>
-            <p><span class="font-semibold">Bachelor Management Hotelier (Bac+3)</span> - Vatel France (2006-2009). Service client, organisation, gestion des priorites et execution operationnelle.</p>
-            <div class="flex flex-wrap gap-1 mt-0.5">
+            <p><strong>Bachelor Management Hotelier (Bac+3)</strong> - Vatel France (2006-2009). Service client, organisation, gestion des priorites et execution operationnelle.</p>
+            <div class="tag-wrap">
               <span class="skill-tag">Service client</span><span class="skill-tag">Organisation</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Certifications -->
-      <section class="page-break bg-gradient-to-br from-amber-100 to-yellow-200 rounded-lg shadow-md border-none p-2" aria-label="Certifications">
-        <h3 class="text-base font-bold text-primary mb-1">Certifications</h3>
-        <div class="text-xs text-text-gray space-y-0.5 leading-snug">
-          <div>
-          <p><span class="font-semibold">Make Advanced</span> · Automatisation de workflows, connexions entre outils et circulation de donnees.</p>
-          </div>
-          <div>
-            <p><span class="font-semibold">Professional Scrum Master I (PSM I)</span> · Methodologie Agile, priorisation et coordination d'equipe.</p>
-          </div>
-        </div>
+      <section class="section-card section-cert" aria-label="Certifications">
+        <h3>Certifications</h3>
+        <p><strong>Make Advanced</strong> · Automatisation de workflows, connexions entre outils et circulation de donnees.</p>
+        <p><strong>Professional Scrum Master I (PSM I)</strong> · Methodologie Agile, priorisation et coordination d'equipe.</p>
+        <p>Application concrète : structuration de routines, suivi des actions et meilleure fluidité entre les équipes.</p>
       </section>
 
-      <!-- Outils -->
-      <section class="page-break bg-gradient-to-br from-cyan-100 to-blue-200 rounded-lg shadow-md border-none p-2" aria-label="Stack">
-        <h3 class="text-base font-bold text-primary mb-1">Outils</h3>
-        <div class="space-y-0.5">
-          <div class="flex flex-wrap gap-1">
-            <span class="skill-tag">CRM</span><span class="skill-tag">Excel</span><span class="skill-tag">Google Sheets</span><span class="skill-tag">Suite Office</span><span class="skill-tag">Notion</span><span class="skill-tag">Slack</span>
-            <span class="skill-tag">Make</span><span class="skill-tag">GA4</span><span class="skill-tag">Looker Studio</span>
-          </div>
-          <p class="text-xs text-text-gray leading-snug">Usage concret : suivi de dossiers, reporting, mise a jour des donnees, coordination des actions et tableaux de bord.</p>
+      <section class="section-card section-tools" aria-label="Tools">
+        <h3>Outils</h3>
+        <div class="tag-wrap">
+          <span class="skill-tag">CRM</span><span class="skill-tag">Excel</span><span class="skill-tag">Google Sheets</span><span class="skill-tag">Suite Office</span><span class="skill-tag">Notion</span><span class="skill-tag">Slack</span>
+          <span class="skill-tag">Make</span><span class="skill-tag">GA4</span><span class="skill-tag">Looker Studio</span>
         </div>
+        <p>Usage concret : suivi de dossiers, reporting, mise a jour des donnees, coordination des actions et tableaux de bord.</p>
+        <p>Approche : clarifier les flux d'information, fiabiliser les entrées et faciliter la prise de décision au quotidien.</p>
       </section>
 
-      <!-- Langues -->
-      <section class="page-break bg-gradient-to-br from-emerald-100 to-teal-200 rounded-lg shadow-md border-none p-2" aria-label="Languages">
-        <h3 class="text-base font-bold text-primary mb-1">Langues</h3>
-        <div class="text-xs text-text-gray space-y-0.5 leading-snug">
-          <p><span class="font-semibold">Français</span> : langue maternelle. Communication client, coordination interne et redaction de supports.</p>
-          <p><span class="font-semibold">Anglais</span> : niveau professionnel, pratique quotidienne en contexte international (Catawiki, reportings, echanges clients et rapports).</p>
-        </div>
+      <section class="section-card section-projects" aria-label="Operational Projects">
+        <h3>Realisations operationnelles</h3>
+        <ul class="projects-list">
+          <li>Structuration de tableaux de suivi pour prioriser les tâches et visualiser les points de blocage.</li>
+          <li>Mise en place de routines hebdomadaires pour fiabiliser les donnees et harmoniser les mises a jour.</li>
+          <li>Coordination de demandes multi-interlocuteurs avec suivi clair des statuts et des prochaines actions.</li>
+        </ul>
       </section>
 
+      <section class="section-card section-lang" aria-label="Languages">
+        <h3>Langues</h3>
+        <p><strong>Français</strong> : langue maternelle. Communication client, coordination interne et redaction de supports.</p>
+        <p><strong>Anglais</strong> : niveau professionnel, pratique quotidienne en contexte international (Catawiki, reportings, echanges clients et rapports).</p>
+      </section>
+
+      <section class="section-card section-interests" aria-label="Centres d'interet">
+        <h3>Centres d’intérêt</h3>
+        <ul class="projects-list">
+          <li><strong>Technologie & innovation</strong> : veille sur les tendances du marketing digital, automation et data-driven marketing.</li>
+          <li><strong>Bénévolat</strong> : Change Now, maraudes alimentaires.</li>
+          <li><strong>Sports</strong> : trail, surf, golf, tennis.</li>
+        </ul>
+      </section>
     </div>
-    <div style="display:none">Etienne Gaumery alternance digitalisation outils pilotage supply chain Thales Bordeaux reporting KPI CRM qualite donnees standardisation process coordination metiers amelioration continue dashboards</div>
-<script>
- if (window.lucide && window.lucide.createIcons) {
-  window.lucide.createIcons();
- }
-</script>
+  </main>
 </body>
 </html>
